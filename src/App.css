@@ -1,5 +1,5 @@
 .app-wrapper {
-  background-color: #FFF8DC;
+  background-color: #e3e8e6;
 }
 
 .container {
@@ -7,7 +7,7 @@
   border-right: 1px solid white; */
   /* background-color: white; */
   width: 1300px;
-  height: 100vh;
+  height: 100%;
   margin: 0 auto;
 
   display: grid;
