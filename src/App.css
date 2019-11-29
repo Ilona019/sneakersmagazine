@@ -1,0 +1,23 @@
+.app-wrapper {
+  background-color: #FFF8DC;
+}
+
+.container {
+  /* border-left: 1px solid white;
+  border-right: 1px solid white; */
+  /* background-color: white; */
+  width: 1300px;
+  height: 100vh;
+  margin: 0 auto;
+
+  display: grid;
+
+  grid-template-areas: 
+    "h h"
+    "m m"
+    "c c";
+
+    grid-template-rows: 120px 120px 1fr;
+    grid-template-columns: 3fr 10fr; 
+    grid-gap: 10px;
+}

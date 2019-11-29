@@ -1,0 +1,50 @@
+/* @font-face{
+    font-family: "Shadows Into Light", cursive;
+    src: ("../../fonts/menu.ttf")
+} */
+.slider-class {
+    display: flex;
+}
+
+.nav {
+    grid-area: m;
+    background-color: #FFF8DC;
+    display: flex;
+    justify-content: flex-start;
+}
+
+.item { 
+    cursor: pointer;
+    height: fit-content;
+    padding: 10px 20px;
+    box-sizing: border-box;
+    /* font-family: "Shadows Into Light", cursive;  */
+    /* text-wrap: none; */
+}
+
+.item:hover {
+    border: 1px solid #222;
+    /* border-collapse: collapse; */
+    background: white;
+}
+
+.item:hover .n2{
+    display: block;
+}
+
+.n2 {
+    margin: 10px -21px;
+    position: absolute;
+    box-sizing: border-box;
+    border: 1px solid #222;
+    cursor: pointer;
+    display: none;
+    width: 200px;
+    background: white;
+}
+
+.sub-item {
+    padding: 10px 20px;
+}
+
+

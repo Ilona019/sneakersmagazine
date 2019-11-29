@@ -1,0 +1,8 @@
+.header-class {
+    grid-area: h;
+    background-color: #FFF8DC;
+
+    width: 1300px;
+
+    display: flex;
+}
