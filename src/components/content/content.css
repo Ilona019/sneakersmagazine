@@ -1,7 +1,7 @@
 .content-class {
     grid-area: c;
-    background-color: #e3e8e6;
-    border: 1px solid red;
+    background-color: #222;
+    /* border: 1px solid red; */
 
     display: flex;
     flex-wrap: wrap;

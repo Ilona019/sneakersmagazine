@@ -6,9 +6,9 @@
 .logo-class {
     /* display: inline-block; */
     font-family: "Hanging Letters";
-    padding: 35px 60px;
-    background-color: #e3e8e6;
-    color: #222;
+    padding: 35px 10px;
+    background-color: #222;
+    color: white;
     font-size: 45px;
-
+    cursor: default;
 }
