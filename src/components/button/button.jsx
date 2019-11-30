@@ -1,11 +1,17 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import classNames from 'classnames';
+import React from "react";
+import PropTypes from "prop-types";
+import classNames from "classnames";
 
-import './button.css';
+import "./button.css";
 
 const Button = ({
-  children, onClick, className, disabled, active, invert, ...attrs
+  children,
+  onClick,
+  className,
+  disabled,
+  active,
+  invert,
+  ...attrs
 }) => {
   const onClickAction = e => {
     if (disabled) {
@@ -15,14 +21,9 @@ const Button = ({
     }
   };
 
-  const classes = classNames(
-    'btn',
-    className,
-    { active },
-    { invert },
-  );
+  const classes = classNames("btn", className, { active }, { invert });
 
-  const Tag = attrs.href ? 'a' : 'button';
+  const Tag = attrs.href ? "a" : "button";
 
   return (
     <Tag
@@ -41,15 +42,15 @@ Button.propTypes = {
   onClick: PropTypes.func,
   className: PropTypes.string,
   disabled: PropTypes.bool,
-  active: PropTypes.bool,
+  active: PropTypes.bool
 };
 
 Button.defaultProps = {
-  children: 'Default button',
+  children: "Default button",
   onClick: () => {},
-  className: '',
+  className: "",
   disabled: false,
-  active: false,
+  active: false
 };
 
 export default Button;
