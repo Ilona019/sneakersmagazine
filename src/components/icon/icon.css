@@ -1,0 +1,8 @@
+.func {
+    cursor: pointer;
+}
+  
+.func.disabled {
+    cursor: not-allowed;
+}
+  
