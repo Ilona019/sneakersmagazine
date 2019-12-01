@@ -1,150 +1,183 @@
 import React from "react";
 import Button from "../button/button";
+import Input from "../input/input";
+import classes from "./formsStyles.css";
+import is from "is_js";
 
 class RegistrationForm extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      firstName: "",
-      lastName: "",
-      mobilePhone: "",
-      birthday: "",
-      email: "",
-      password: "",
-      passwordAgain: "",
-      errors: { email: "", password: "" }
+  state = {
+    isFormValid: false,
+    formControls: {
+      firstName: {
+        value: "",
+        type: "text",
+        label: "Имя/First name",
+        errorMessage: "Имя может содержать только буквы.",
+        valid: false,
+        touched: false,
+        validation: {
+          required: true,
+          isName: true
+        }
+      },
+      lastName: {
+        value: "",
+        type: "text",
+        label: "Фамилия/Last name",
+        errorMessage: "Фамилия может содержать только буквы.",
+        valid: false,
+        touched: false,
+        validation: {
+          required: true,
+          isName: true
+        }
+      },
+      birthday: {
+        value: "",
+        type: "date",
+        label: "Дата рождения/Date of birth",
+        errorMessage: "Введённая дата некорректна.",
+        valid: false,
+        touched: false,
+        validation: {
+          required: true,
+          isDate: true
+        }
+      },
+      telephone: {
+        value: "",
+        type: "tel",
+        label: "Телефон/Mobile phone +7",
+        errorMessage: "Неправильный формат номера.",
+        valid: false,
+        touched: false,
+        validation: {
+          required: true,
+          isTel: true
+        }
+      },
+      email: {
+        value: "",
+        type: "email",
+        label: "Email",
+        errorMessage: "Введите корректный email.",
+        valid: false,
+        touched: false,
+        validation: {
+          required: true,
+          email: true
+        }
+      },
+      password: {
+        value: "",
+        type: "password",
+        label: "Пароль/Password",
+        errorMessage: "Введите корректный пароль. Длина больше 6 символов.",
+        valid: false,
+        touched: false,
+        validation: {
+          required: true,
+          minLength: 6
+        }
+      }
+    }
+  };
+
+  submitHandler = event => {
+    event.preventDefault()
+  };
+
+  validateControl(value, validation) {
+    if (!validation) {
+      return true;
+    }
+
+    let isValid = true;
+
+    if (validation.isName) {
+      isValid = (value.match(/^[А-Яа-я]+$/) || value.match(/^[A-Za-z]+$/)) && isValid
+    }
+
+    if (validation.required) {
+      isValid = value.trim() !== "" && isValid
+    }
+
+    if (validation.isDate) {
+      var year = value.substr(0, 4)
+      var mon = value.substr(5, 2)
+      var day = value.substr(-2)
+      var newDate = [mon, day, year]
+      isValid = is.dateString(newDate.join("/"))
+    }
+
+    if (validation.isTel) {
+      isValid = is.nanpPhone(value) && isValid;
+    }
+
+    if (validation.email) {
+      isValid = is.email(value) && isValid;
+    }
+
+    if (validation.minLength) {
+      isValid = value.length >= validation.minLength && isValid;
+    }
+
+    return isValid;
+  }
+
+  onChangeHandler = (event, controlName) => {
+    const formControls = { ...this.state.formControls }
+    const control = {
+      ...formControls[controlName]
     };
 
-    this.onChangeFirstName = this.onChangeFirstName.bind(this);
-    this.onChangeLastName = this.onChangeLastName.bind(this);
-    this.onChangeBirthday = this.onChangeBirthday.bind(this);
-    this.onChangeMobilePhone = this.onChangeMobilePhone.bind(this);
-    this.onChangeEmail = this.onChangeEmail.bind(this);
-    this.onChangePassword = this.onChangePassword.bind(this);
-    this.onChangePasswordAgain = this.onChangePasswordAgain.bind(this);
-    this.onSubmit = this.onSubmit.bind(this);
-  }
+    control.value = event.target.value
+    control.touched = true;
+    control.valid = this.validateControl(control.value, control.validation)
 
-  onSubmit(event) {
-    alert(`${this.state.email}, добро пожаловать!`);
-    event.preventDefault();
-    if (!this._isFormValid()) return;
-  }
+    formControls[controlName] = control
 
-  _isFormValid() {
-    return (
-      this._isEmailValid(this.state.email) &&
-      this._isPasswordValid(this.state.password)
-    );
-  }
+    let isFormValid = true
 
-  onChangeFirstName(event) {
-    this.setState({ firstName: event.target.value });
-  }
+    Object.keys(formControls).forEach(name => {
+      isFormValid = formControls[name].valid && isFormValid
+    });
 
-  onChangeLastName(event) {
-    this.setState({ lastName: event.target.value });
-  }
+    this.setState({
+      formControls,
+      isFormValid
+    });
+  };
 
-  onChangeBirthday(event) {
-    this.setState({ birthday: event.target.value });
-  }
-
-  onChangeMobilePhone(event) {
-    this.setState({ mobilePhone: event.target.value });
-  }
-
-  onChangeEmail(event) {
-    this.setState({ email: event.target.value });
-  }
-
-  onChangePassword(event) {
-    this.setState({ password: event.target.value });
-  }
-
-  onChangePasswordAgain(event) {
-    this.setState({ passwordAgain: event.target.value });
+  renderInputs() {
+    return Object.keys(this.state.formControls).map((controlName, index) => {
+      const control = this.state.formControls[controlName]
+      return (
+        <Input
+          key={controlName + index}
+          type={control.type}
+          value={control.value}
+          valid={control.valid}
+          touched={control.touched}
+          label={control.label}
+          shouldValidate={!!control.validation}
+          errorMessage={control.errorMessage}
+          onChange={event => this.onChangeHandler(event, controlName)}
+        />
+      );
+    });
   }
 
   render() {
     return (
-      <form className="form" onSubmit={this.onSubmit}>
-        <div>
-          <input
-            required
-            type="text"
-            name="firstName"
-            placeholder="Имя"
-            value={this.state.firstName}
-            onChange={this.onChangeFirstName}
-            errors={this.state.errors}
-          />
-        </div>
-        <div>
-          <input
-            required
-            type="text"
-            name="lastName"
-            placeholder="Фамилия"
-            value={this.state.lastName}
-            onChange={this.onChangeLastName}
-            errors={this.state.errors}
-          />
-        </div>
-        <div>
-          <input
-            type="date"
-            name="birthday"
-            value={this.state.birthday}
-            onChange={this.onChangeBirthday}
-            errors={this.state.errors}
-          />
-        </div>
-        <div>
-          <input
-            required
-            type="tel"
-            name="mobilePhone"
-            placeholder="Телефон"
-            value={this.state.mobilePhone}
-            onChange={this.onChangeMobilePhone}
-            errors={this.state.errors}
-          />
-        </div>
-        <div>
-          <input
-            placeholder="Почта"
-            name="email"
-            value={this.state.email}
-            onChange={this.onChangeEmail}
-            errors={this.state.errors}
-          />
-        </div>
-        <div>
-          <input
-            className="formaInput"
-            type="password"
-            name="password"
-            placeholder="Пароль"
-            value={this.state.password}
-            onChange={this.onChangePassword}
-            errors={this.state.errors}
-          />
-        </div>
-        <div>
-          {" "}
-          <input
-            className="formaInput"
-            type="password"
-            name="password"
-            placeholder="Подтвердение пароля"
-            value={this.state.passwordAgain}
-            onChange={this.onChangePasswordAgain}
-            errors={this.state.errors}
-          />
-        </div>
+      <form className={classes.form} onSubmit={this.submitHandler}>
+        {this.renderInputs()}
         <br></br>
-        <Button type="submit" onClick={this.onSubmit}>
+        <Button
+          type="submit"
+          onClick={this.registrationHandler}
+          disabled={!this.state.isFormValid}
+        >
           Зарегистрироваться
         </Button>
       </form>
@@ -152,4 +185,4 @@ class RegistrationForm extends React.Component {
   }
 }
 
-export default RegistrationForm;
+export default RegistrationForm

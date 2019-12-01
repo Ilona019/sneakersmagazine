@@ -1,100 +1,119 @@
 import React from "react";
-import { bindAll } from "lodash";
 import Button from "../button/button";
+import Input from "../input/input";
+import classes from "./formsStyles.css";
+import is from "is_js";
 
 class LoginForm extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      email: "",
-      password: "",
-      errors: { errorEmail: "", errorPassword: "" }
+  state = {
+    isFormValid: false,
+    formControls: {
+      email: {
+        value: "",
+        type: "email",
+        label: "Email",
+        errorMessage: "Введите корректный email.",
+        valid: false,
+        touched: false,
+        validation: {
+          required: true,
+          email: true
+        }
+      },
+      password: {
+        value: "",
+        type: "password",
+        label: "Пароль",
+        errorMessage: "Введите корректный пароль. Длина больше 6 символов.",
+        valid: false,
+        touched: false,
+        validation: {
+          required: true,
+          minLength: 6
+        }
+      }
+    }
+  };
+
+  submitHandler = event => {
+    event.preventDefault();
+  };
+
+  validateControl(value, validation) {
+    if (!validation) {
+      return true;
+    }
+
+    let isValid = true;
+
+    if (validation.required) {
+      isValid = value.trim() !== "" && isValid;
+    }
+
+    if (validation.email) {
+      isValid = is.email(value) && isValid;
+    }
+
+    if (validation.minLength) {
+      isValid = value.length >= validation.minLength && isValid;
+    }
+
+    return isValid;
+  }
+
+  onChangeHandler = (event, controlName) => {
+    const formControls = { ...this.state.formControls };
+    const control = {
+      ...formControls[controlName]
     };
 
-    bindAll(
-      this,
-      ["onChangeEmail", "onChangePassword", "onSubmit", "_isFormValid"],
-      "_isEmailValid",
-      "_isPasswordValid"
-    );
-  }
+    control.value = event.target.value;
+    control.touched = true;
+    control.valid = this.validateControl(control.value, control.validation);
 
-  onSubmit(event) {
-    alert(`${this.state.email}, добро пожаловать!`);
-    event.preventDefault();
-    if (!this._isFormValid()) return;
-  }
+    formControls[controlName] = control;
 
-  _isFormValid() {
-    return (
-      this._isEmailValid(this.state.email) &&
-      this._isPasswordValid(this.state.password)
-    );
-  }
+    let isFormValid = true;
 
-  _isEmailValid(email) {
-    let errorEmail = "";
-    if (email === "") {
-      errorEmail = "Поле не может быть пустым!";
-      this.setState({ errorEmail });
-      return false;
-    }
+    Object.keys(formControls).forEach(name => {
+      isFormValid = formControls[name].valid && isFormValid;
+    });
 
-    this.setState({ errorEmail });
-    return true;
-  }
+    this.setState({
+      formControls,
+      isFormValid
+    });
+  };
 
-  _isPasswordValid(password) {
-    let errorPassword = "";
-
-    if (password === "") {
-      errorPassword = "Поле не может быть пустым!";
-      return false;
-    }
-
-    if (password.length < 3) {
-      errorPassword = "Длина пароля не может быть меньше 3-х символов.";
-      return false;
-    }
-
-    this.setState({ errorPassword });
-    return true;
-  }
-
-  onChangePassword(event) {
-    this.setState({ password: event.target.value });
-  }
-
-  onChangeEmail(event) {
-    this.setState({ email: event.target.value });
+  renderInputs() {
+    return Object.keys(this.state.formControls).map((controlName, index) => {
+      const control = this.state.formControls[controlName];
+      return (
+        <Input
+          key={controlName + index}
+          type={control.type}
+          value={control.value}
+          valid={control.valid}
+          touched={control.touched}
+          label={control.label}
+          shouldValidate={!!control.validation}
+          errorMessage={control.errorMessage}
+          onChange={event => this.onChangeHandler(event, controlName)}
+        />
+      );
+    });
   }
 
   render() {
     return (
-      <form className="form" onSubmit={this.onSubmit}>
-        <div>
-          <input
-            placeholder="Почта"
-            type="email"
-            name="email"
-            error={this.state.errorEmail}
-            value={this.state.email}
-            onChange={this.onChangeEmail}
-          />
-        </div>
-        <div>
-          <input
-            className="formaInput"
-            type="password"
-            name="password"
-            placeholder="Пароль"
-            onChange={this.onChangePassword}
-            value={this.state.password}
-            error={this.state.errorPassword}
-          />
-        </div>
+      <form className={classes.form} onSubmit={this.submitHandler}>
+        {this.renderInputs()}
         <br></br>
-        <Button type="submit" onClick={this.onSubmit}>
+        <Button
+          type="submit"
+          onClick={this.loginHandler}
+          disabled={!this.state.isFormValid}
+        >
           Войти
         </Button>
       </form>
