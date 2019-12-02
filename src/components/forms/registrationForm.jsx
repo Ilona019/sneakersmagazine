@@ -2,6 +2,7 @@ import React from "react";
 import Button from "../button/button";
 import Input from "../input/input";
 import classes from "./formsStyles.css";
+import {ValidateControlLogin} from "./validateControlLogin";
 import is from "is_js";
 
 class RegistrationForm extends React.Component {
@@ -84,42 +85,31 @@ class RegistrationForm extends React.Component {
   };
 
   submitHandler = event => {
-    event.preventDefault()
+    event.preventDefault();
   };
 
   validateControl(value, validation) {
-    if (!validation) {
-      return true;
-    }
 
-    let isValid = true;
+    let isValid = ValidateControlLogin(value, validation);
 
     if (validation.isName) {
-      isValid = (value.match(/^[А-Яа-я]+$/) || value.match(/^[A-Za-z]+$/)) && isValid
+      isValid = (value.match(/^[А-Яа-я]+$/) || value.match(/^[A-Za-z]+$/)) && isValid;
     }
 
     if (validation.required) {
-      isValid = value.trim() !== "" && isValid
+      isValid = value.trim() !== "" && isValid;
     }
 
     if (validation.isDate) {
-      var year = value.substr(0, 4)
-      var mon = value.substr(5, 2)
-      var day = value.substr(-2)
-      var newDate = [mon, day, year]
-      isValid = is.dateString(newDate.join("/"))
+      var year = value.substr(0, 4);
+      var mon = value.substr(5, 2);
+      var day = value.substr(-2);
+      var newDate = [mon, day, year];
+      isValid = is.dateString(newDate.join("/"));
     }
 
     if (validation.isTel) {
       isValid = is.nanpPhone(value) && isValid;
-    }
-
-    if (validation.email) {
-      isValid = is.email(value) && isValid;
-    }
-
-    if (validation.minLength) {
-      isValid = value.length >= validation.minLength && isValid;
     }
 
     return isValid;
@@ -133,14 +123,14 @@ class RegistrationForm extends React.Component {
 
     control.value = event.target.value
     control.touched = true;
-    control.valid = this.validateControl(control.value, control.validation)
+    control.valid = this.validateControl(control.value, control.validation);
 
-    formControls[controlName] = control
+    formControls[controlName] = control;
 
-    let isFormValid = true
+    let isFormValid = true;
 
     Object.keys(formControls).forEach(name => {
-      isFormValid = formControls[name].valid && isFormValid
+      isFormValid = formControls[name].valid && isFormValid;
     });
 
     this.setState({
@@ -151,7 +141,7 @@ class RegistrationForm extends React.Component {
 
   renderInputs() {
     return Object.keys(this.state.formControls).map((controlName, index) => {
-      const control = this.state.formControls[controlName]
+      const control = this.state.formControls[controlName];
       return (
         <Input
           key={controlName + index}
@@ -170,7 +160,7 @@ class RegistrationForm extends React.Component {
 
   render() {
     return (
-      <form className={classes.form} onSubmit={this.submitHandler}>
+      <form className={classes.form} onSubmit={this.submitHandler} action="#" method="post">
         {this.renderInputs()}
         <br></br>
         <Button
@@ -185,4 +175,4 @@ class RegistrationForm extends React.Component {
   }
 }
 
-export default RegistrationForm
+export default RegistrationForm;

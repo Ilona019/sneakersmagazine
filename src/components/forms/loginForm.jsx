@@ -2,7 +2,7 @@ import React from "react";
 import Button from "../button/button";
 import Input from "../input/input";
 import classes from "./formsStyles.css";
-import is from "is_js";
+import {ValidateControlLogin} from "./validateControlLogin";
 
 class LoginForm extends React.Component {
   state = {
@@ -39,28 +39,6 @@ class LoginForm extends React.Component {
     event.preventDefault();
   };
 
-  validateControl(value, validation) {
-    if (!validation) {
-      return true;
-    }
-
-    let isValid = true;
-
-    if (validation.required) {
-      isValid = value.trim() !== "" && isValid;
-    }
-
-    if (validation.email) {
-      isValid = is.email(value) && isValid;
-    }
-
-    if (validation.minLength) {
-      isValid = value.length >= validation.minLength && isValid;
-    }
-
-    return isValid;
-  }
-
   onChangeHandler = (event, controlName) => {
     const formControls = { ...this.state.formControls };
     const control = {
@@ -69,7 +47,7 @@ class LoginForm extends React.Component {
 
     control.value = event.target.value;
     control.touched = true;
-    control.valid = this.validateControl(control.value, control.validation);
+    control.valid = ValidateControlLogin(control.value, control.validation);
 
     formControls[controlName] = control;
 
@@ -106,7 +84,7 @@ class LoginForm extends React.Component {
 
   render() {
     return (
-      <form className={classes.form} onSubmit={this.submitHandler}>
+      <form className={classes.form} action="#" method="post">
         {this.renderInputs()}
         <br></br>
         <Button
