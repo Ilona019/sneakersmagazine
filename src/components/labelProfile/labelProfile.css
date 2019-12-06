@@ -6,4 +6,6 @@
 
     margin-left: auto;
     cursor: pointer;
+
+    height: fit-content;
 }

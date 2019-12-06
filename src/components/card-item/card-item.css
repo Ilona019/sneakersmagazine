@@ -1,11 +1,19 @@
 .card-item-class {
-    margin: 10px 5px;
+    margin: 5px 5px;
     width: 305px;
     height: 350px;
     background: white;
+    /* background:linear-gradient(rgb(255, 255, 255), rgb(220, 220, 215)); */
     /* border: 1px solid yellow; */
+    position: relative;
+
+    
 }
 
 .card-item-class:hover {
     transform: scale(1.05);
 }
+
+
+
+

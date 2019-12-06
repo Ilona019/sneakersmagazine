@@ -6,3 +6,16 @@
 
     display: flex;
 }
+
+.image-heart {
+    width: 50px;
+    margin-top: 40px;
+    cursor: pointer;
+}
+
+.shop-cart {
+    width: 50px;
+    margin-left: 30px;
+    margin-top: 40px;
+    cursor: pointer;
+}

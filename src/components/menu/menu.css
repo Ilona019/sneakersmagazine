@@ -19,18 +19,18 @@
     padding: 10px 20px;
     box-sizing: border-box;
     color: white;
-    /* font-family: "Shadows Into Light", cursive;  */
-    /* text-wrap: none; */
+    border: 1px solid transparent;
+    white-space: nowrap;
 }
 
 .item:hover {
     border: 1px solid white;
-    /* border-collapse: collapse; */
     background: #222;
 }
 
 .item:hover .n2{
     display: block;
+    z-index: 1;
 }
 
 .n2 {
@@ -46,6 +46,7 @@
 
 .sub-item {
     padding: 10px 20px;
+    white-space: pre-wrap;
 }
 
 

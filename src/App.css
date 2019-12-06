@@ -15,7 +15,8 @@
   grid-template-areas: 
     "h h"
     "m m"
-    "c c";
+    "c c"
+    "f f";
 
     grid-template-rows: 120px 120px 1fr;
     grid-template-columns: 3fr 10fr; 

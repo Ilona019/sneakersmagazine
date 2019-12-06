@@ -1,5 +1,6 @@
 import React from 'react';
 import './menu.css';
+import Price from './../price/price'
 
 function Menu(){
     let menus = [
@@ -23,13 +24,6 @@ function Menu(){
                     "Женщины"
                 ]
             },
-            // {
-            //     name: "Расса",
-            //     nameSubmenu: [
-            //         "Афроамериканец",
-            //         "Европеоид"
-            //     ]
-            // },
             {
                 name: "Размер",
                 nameSubmenu: [
@@ -92,6 +86,7 @@ function Menu(){
                     )
                 })}
             </nav>
+            <Price />
             </div>
         );
 
