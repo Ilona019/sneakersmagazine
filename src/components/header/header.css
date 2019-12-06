@@ -11,6 +11,7 @@
     width: 50px;
     margin-top: 40px;
     cursor: pointer;
+    position: relative;
 }
 
 .shop-cart {
@@ -18,4 +19,5 @@
     margin-left: 30px;
     margin-top: 40px;
     cursor: pointer;
+    position: relative;
 }

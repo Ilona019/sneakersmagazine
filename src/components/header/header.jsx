@@ -7,6 +7,7 @@ import heart from './../../images/heart.svg';
 import ImgHeart from './../imgHeart/imgHeart';
 import shoppingCart from './../../images/shopping-cart.svg';
 import ImgShoppingCart from './../imgShoppingCart/imgShoppingCart';
+import ButtonCount from './../button-count/button-count';
 
 function Header() {
   return (
@@ -15,9 +16,11 @@ function Header() {
         <Search />
         <div className = "image-heart">
           <ImgHeart way = {heart}/>
+          <ButtonCount count = "0" />
         </div>
        <div className = "shop-cart">
         <ImgShoppingCart way = {shoppingCart}/>
+        <ButtonCount count = "0" />
        </div>
         <LabelProfile />
       </div>
