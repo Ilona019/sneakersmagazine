@@ -9,3 +9,9 @@
 .fa-times{
     color: #ffffff;
 }
+
+.fa-user{
+    display: block;
+    color: #ffffff; 
+    padding:20px; 
+}

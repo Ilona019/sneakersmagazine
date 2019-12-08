@@ -24,7 +24,7 @@ const Modal = ({
             <div className={classes}>
               <div className="modalHeader">
                 <div className="modalTitle">{title}</div>
-                <Icon name="times" size={1.3} onClick={onCancel} />
+                <Icon name="times" size={1.3} onClick={onCancel} />                
               </div>
               <div className="modalBody">{children}</div>
             </div>
