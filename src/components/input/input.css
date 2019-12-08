@@ -5,10 +5,10 @@
 .labelInputContainer {
   display: flex;
   justify-content: space-between;
+  
 }
 
 .Input label {
-  margin-bottom: 3px;
   padding: 0;
   display: block;
   font-weight: bold;
@@ -27,6 +27,7 @@
 }
 
 .Input span {
+  position: absolute;
   color: #f01f30;
   font-size: 12px;
   font-weight: bold;
@@ -37,12 +38,12 @@
 }
 
 .Input.invalid input {
-  background-color: pink;
+  background-color: #f9bcb9;
   border-radius: 5px;
-  border: 2px solid #e91e14;
+  border-color: #e91e14;
 }
 
 input:focus {
-  border: 2px solid #0052b6;
+  border-color: #0052b6;
   border-radius: 5px;
 }

@@ -1,7 +1,6 @@
 import React from "react";
 import Button from "../button/button";
 import Input from "../input/input";
-import classes from "./formsStyles.css";
 import {ValidateControlLogin} from "./validateControlLogin";
 import is from "is_js";
 
@@ -160,7 +159,7 @@ class RegistrationForm extends React.Component {
 
   render() {
     return (
-      <form className={classes.form} onSubmit={this.submitHandler} action="#" method="post">
+      <form onSubmit={this.submitHandler} action="#" method="post">
         {this.renderInputs()}
         <br></br>
         <Button

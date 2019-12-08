@@ -1,7 +1,6 @@
 import React from "react";
 import Button from "../button/button";
 import Input from "../input/input";
-import classes from "./formsStyles.css";
 import {ValidateControlLogin} from "./validateControlLogin";
 
 class LoginForm extends React.Component {
@@ -84,13 +83,13 @@ class LoginForm extends React.Component {
 
   render() {
     return (
-      <form className={classes.form} action="#" method="post">
+      <form action="#" method="post">
         {this.renderInputs()}
         <br></br>
         <Button
           type="submit"
           onClick={this.loginHandler}
-          disabled={!this.state.isFormValid}
+          disabled={!this.state.isFormValid}     
         >
           Войти
         </Button>
