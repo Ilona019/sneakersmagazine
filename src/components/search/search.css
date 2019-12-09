@@ -2,6 +2,7 @@
     width: 500px;
     margin: 23px auto;
     position: relative;
+    font-weight: lighter;
   }
   
   .input-wrapper::after {
@@ -10,7 +11,8 @@
     line-height: 0;
     height: 0;
     max-width: 100%;
-    font-family: Roboto, Arial, sans-serif;
+    font-weight: lighter;
+    /* font-family: Roboto, Arial, sans-serif; */
     border-bottom: 3px solid white;
     position: absolute;
     left: 0;
@@ -31,7 +33,8 @@
     min-width: 100%;
     font-size: 1.5rem;
     line-height: 3em;
-    font-family: Roboto, Arial, sans-serif;
+    font-weight: lighter;
+    /* font-family: Roboto, Arial, sans-serif; */
     border-bottom: 3px solid #222;
     background-color: transparent;  
  }

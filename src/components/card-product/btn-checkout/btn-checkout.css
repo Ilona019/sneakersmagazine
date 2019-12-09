@@ -1,0 +1,14 @@
+.btn-checkout-class {
+    width: 120px;
+    border: 1px solid dodgerblue;
+    padding-left: 30px;
+    font-size: 18px;
+    font-weight: lighter;
+    cursor: pointer;
+    background: dodgerblue;
+}
+
+.btn-checkout-class:hover {
+    background: mediumblue;
+    border: 1px solid mediumblue;
+}

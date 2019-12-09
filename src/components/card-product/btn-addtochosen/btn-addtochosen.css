@@ -1,0 +1,13 @@
+.btn-addtochosen-class {
+    width: 120px;
+    border: 1px solid white;
+    padding-left: 30px;
+    font-size: 18px;
+    font-weight: lighter;
+    cursor: pointer;
+}
+
+.btn-addtochosen-class:hover {
+    border: 1px solid dodgerblue;
+    color: dodgerblue;
+}

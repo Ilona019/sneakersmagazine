@@ -1,0 +1,21 @@
+.size-class {
+    font-size: 22px;
+    font-weight: lighter;
+    margin-left: 10px;
+
+    width: 40px;
+    height: 35px;
+    line-height: 30px;
+    box-sizing: border-box;
+    border: 1px solid lightgrey;
+    border-radius: 3px;
+    padding-left: 7px;
+    background: #222;
+    color: white;
+    cursor: pointer;
+}
+
+.size-class:hover {
+    border: 1px solid dodgerblue;
+    color: dodgerblue;
+}
