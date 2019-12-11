@@ -2,13 +2,12 @@
   background-color: #222;
 }
 
-.container {
-  /* border-left: 1px solid white;
-  border-right: 1px solid white; */
-  /* background-color: white; */
+/* .container {
   width: 1300px;
   height: 100%;
   margin: 0 auto;
+
+  border: 1px solid red;
 
   display: grid;
 
@@ -21,4 +20,4 @@
     grid-template-rows: 120px 120px 1fr;
     grid-template-columns: 3fr 10fr; 
     grid-gap: 10px;
-}
+} */

@@ -4,7 +4,6 @@ import './search.css';
 function Search() {
 
   function handleChange(e){
-    // console.log(e.target.value)
     const wrapper = document.querySelector(".input-wrapper");
     const textInput = document.querySelector("input[type='text']");
 
