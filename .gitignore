@@ -24,6 +24,4 @@ yarn-error.log*
 
 
 #backend
-**/__pycache__/
-*.py 
-!config.py
+__pycache__/*
