@@ -12,8 +12,8 @@ function Header() {
       <div className = "header-class" >
         <Logo />
         <Search />
-        <PopUpWindows content={<LoginForm/>}  title="Войти" classHeightContainer="shortContainer" />
-        <PopUpWindows content={<RegistrationForm />} title="Регистрация" classHeightContainer="longContainer" />
+        <PopUpWindows content={<LoginForm/>}  title="Войти" classHeightContainer="shortContainer" nameIcon="fas fa-sign-in-alt"/>
+        <PopUpWindows content={<RegistrationForm />} title="Регистрация" classHeightContainer="longContainer" nameIcon="fas fa-user-plus"/>
         <LabelProfile />
       </div>
   );
