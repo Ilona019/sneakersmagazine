@@ -19,7 +19,7 @@ const Input = props => {
     <div className={cls}>
       <div className="labelInputContainer">
         <label htmlFor={htmlFor}>{props.label}</label>
-        <input
+        <input 
           type={inputType}
           id={htmlFor}
           value={props.value}

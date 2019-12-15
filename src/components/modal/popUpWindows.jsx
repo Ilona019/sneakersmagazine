@@ -27,7 +27,7 @@ class PopUpWindows extends Component {
           title={this.props.title}
           isOpen={this.state.isOpen}
           onSubmit={this.handleSubmit}
-          onCancel={this.handleCancel}
+          onCancel={this.handleCancel}          
           classHeightContainer={this.props.classHeightContainer}
         >
          {this.props.content}
