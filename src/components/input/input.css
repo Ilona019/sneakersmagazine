@@ -29,6 +29,7 @@
 
 .Input span {
   position: absolute;
+  left: 170px;
   margin-top: 5px;
   color: #f01f30;
   font-size: 12px;
