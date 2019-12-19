@@ -13,6 +13,7 @@ import BtnIncrease from './../card-product/btn-increase/btn-increase';
 
 import i from './../../images/cross/adidas-yeezy-boost-350-v2-trfrm_01-1200x800-1200x800_0.jpg';
 
+
 function CardProduct(props) {
 
   return (

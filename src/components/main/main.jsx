@@ -10,15 +10,10 @@ function Main() {
   return (
     // <div className="app-wrapper">
     <div className = "container">
-      
-      <BrowserRouter>
-
         <Header />
         <Menu />
         <Content />
         <Footer />
-        
-      </BrowserRouter> 
     </div>
   );
 }
