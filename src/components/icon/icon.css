@@ -1,0 +1,23 @@
+.func {
+    cursor: pointer;
+}
+  
+.func.disabled {
+    cursor: not-allowed;
+}
+  
+.fa-times{
+    color: #ffffff;
+}
+
+.fa-user-plus, .fa-sign-in-alt{
+    display: block;
+    color: #ffffff; 
+    margin:20px; 
+    height: 40px;
+}
+
+.fa-user-plus:hover, .fa-sign-in-alt:hover, .fa-times:hover {
+    color: #0566ff;
+    transform: scale(1.2);
+}
