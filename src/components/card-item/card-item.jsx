@@ -6,12 +6,11 @@ import LabelName from "../labelName/labelName";
 import LabelDescription from "../labelDescription/labelDescription";
 import ImgBlueHeart from '../imgBlueHeart/imgBlueHeart';
 import heartBlue from './../../images/heartBlue.svg';
-import CardProduct from './../card-product/card-product';
 import {Link} from 'react-router-dom';
 
 function CardItem(props) {
   return (
-    <Link to="/cardlist" >
+    <Link to="/cardlist" style = {{textDecoration: "none", color: "#222"}} >
       <div className = "card-item-class">
         <ImgBlueHeart way = {heartBlue} />
         <Crossimage way = {props.image} />

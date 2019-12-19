@@ -3,11 +3,8 @@
     width: 305px;
     height: 350px;
     background: white;
-    /* background:linear-gradient(rgb(255, 255, 255), rgb(220, 220, 215)); */
-    /* border: 1px solid yellow; */
     position: relative;
-
-    
+    border-radius: 10px;
 }
 
 .card-item-class:hover {
