@@ -85,6 +85,7 @@ class RegistrationForm extends React.Component {
 
   submitHandler = event => {
     event.preventDefault();
+    console.log("hi")
   };
 
   validateControl(value, validation) {
@@ -163,6 +164,7 @@ class RegistrationForm extends React.Component {
         {this.renderInputs()}
         <br></br>
         <Button
+          className = "align-center-btn"
           type="submit"
           onClick={this.registrationHandler}
           disabled={!this.state.isFormValid}

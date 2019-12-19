@@ -87,6 +87,7 @@ class LoginForm extends React.Component {
         {this.renderInputs()}
         <br></br>
         <Button
+          className = "align-center-btn"
           type="submit"
           onClick={this.loginHandler}
           disabled={!this.state.isFormValid}     
