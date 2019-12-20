@@ -5,6 +5,12 @@ import {ValidateControlLogin} from "./validateControlLogin";
 import is from "is_js";
 
 class RegistrationForm extends React.Component {
+  constructor(props) {
+    super(props);
+    this.registrationHandler = this.registrationHandler.bind(this);
+    this.submitHandler = this.submitHandler.bind(this);
+  }
+
   state = {
     isFormValid: false,
     formControls: {
@@ -83,9 +89,49 @@ class RegistrationForm extends React.Component {
     }
   };
 
+  async registrationHandler() {
+    var url = "https://sneakers-shop-back.herokuapp.com/auth/register/";
+    var data = {
+      firstName: this.state.formControls.firstName.value,
+      lastName: this.state.formControls.lastName.value,
+      birthday: this.state.formControls.birthday.value,
+      telephone: this.state.formControls.telephone.value,
+      email: this.state.formControls.email.value,
+      password: this.state.formControls.password.value
+    };
+
+    try {
+      const response = await fetch(url, {
+        method: "POST",
+        body: JSON.stringify(data),
+        headers: {
+          "Content-Type": "application/json"
+        }
+      });
+      const jsonData = await response.json();
+      var someProperty = { ...this.state.formControls };
+      switch (jsonData.error) {
+        case 0:
+          this.setState({ isFormValid: true });
+          alert(decodeURIComponent(jsonData.messages));
+          break;
+        case 1:
+          someProperty.email.errorMessage = jsonData.messages;
+          someProperty.email.valid = false;
+          this.setState({ formControls: someProperty });
+          this.setState({ isFormValid: false });
+          break;
+        default:
+          this.setState({ isFormValid: false });
+          alert("Неизвестный код ошибки. Пожалуйста, посетите страницу позже.");
+      }
+    } catch (error) {
+      console.error("Ошибка:", error);
+    }
+  }
+
   submitHandler = event => {
     event.preventDefault();
-    console.log("hi")
   };
 
   validateControl(value, validation) {
@@ -160,7 +206,7 @@ class RegistrationForm extends React.Component {
 
   render() {
     return (
-      <form onSubmit={this.submitHandler} action="#" method="post">
+      <form onSubmit={this.submitHandler}>
         {this.renderInputs()}
         <br></br>
         <Button
