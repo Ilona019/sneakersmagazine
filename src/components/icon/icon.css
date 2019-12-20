@@ -1,23 +1,27 @@
 .func {
-    cursor: pointer;
+  cursor: pointer;
 }
-  
+
 .func.disabled {
-    cursor: not-allowed;
-}
-  
-.fa-times{
-    color: #ffffff;
+  cursor: not-allowed;
 }
 
-.fa-user-plus, .fa-sign-in-alt{
-    display: block;
-    color: #ffffff; 
-    margin:20px; 
-    height: 40px;
+.fa-times {
+  color: #ffffff;
 }
 
-.fa-user-plus:hover, .fa-sign-in-alt:hover, .fa-times:hover {
-    color: #0566ff;
-    transform: scale(1.2);
+.fa-user-plus,
+.fa-sign-in-alt,
+.fa-sign-out-alt {
+  display: block;
+  color: #ffffff;
+  margin: 5px auto;
+}
+
+.fa-user-plus:hover,
+.fa-sign-in-alt:hover,
+.fa-times:hover,
+.fa-sign-out-alt:hover {
+  color: #0566ff;
+  transform: scale(1.2);
 }

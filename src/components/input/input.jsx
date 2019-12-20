@@ -8,7 +8,7 @@ function isInvalid({ valid, touched, shouldValidate }) {
 
 const Input = props => {
   const inputType = props.type || "text";
-  var cls = classNames("Input", "input", "label", "span");
+  var cls = classNames("Input", "input", "label", "span", "input-form");
   const htmlFor = `${inputType} - ${Math.random()}`;
 
   if (isInvalid(props)) {
@@ -19,7 +19,7 @@ const Input = props => {
     <div className={cls}>
       <div className="labelInputContainer">
         <label htmlFor={htmlFor}>{props.label}</label>
-        <input 
+        <input
           type={inputType}
           id={htmlFor}
           value={props.value}
