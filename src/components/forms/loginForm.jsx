@@ -1,7 +1,7 @@
 import React from "react";
 import Button from "../button/button";
 import Input from "../input/input";
-import {ValidateControlLogin} from "./validateControlLogin";
+import { ValidateControlLogin } from "./validateControlLogin";
 
 class LoginForm extends React.Component {
   constructor(props) {
@@ -59,17 +59,23 @@ class LoginForm extends React.Component {
       var someProperty = { ...this.state.formControls };
       switch (jsonData.error) {
         case 0:
+          localStorage.setItem("firstName", jsonData.credentials.firstName);
+          localStorage.setItem("lastName", jsonData.credentials.lastName);
           this.setState({ isFormValid: true });
-          alert(decodeURIComponent(jsonData.messages));
+          window.location.reload();
           break;
         case 1:
-          someProperty.email.errorMessage = decodeURIComponent(jsonData.messages);
+          someProperty.email.errorMessage = decodeURIComponent(
+            jsonData.messages
+          );
           someProperty.email.valid = false;
           this.setState({ formControls: someProperty });
           this.setState({ isFormValid: false });
           break;
         case 2:
-          someProperty.password.errorMessage = decodeURIComponent(jsonData.messages);
+          someProperty.password.errorMessage = decodeURIComponent(
+            jsonData.messages
+          );
           someProperty.password.valid = false;
           this.setState({ formControls: someProperty });
           this.setState({ isFormValid: false });
@@ -136,10 +142,10 @@ class LoginForm extends React.Component {
         {this.renderInputs()}
         <br></br>
         <Button
-          className = "align-center-btn"
+          className="align-center-btn"
           type="submit"
           onClick={this.loginHandler}
-          disabled={!this.state.isFormValid}     
+          disabled={!this.state.isFormValid}
         >
           Войти
         </Button>

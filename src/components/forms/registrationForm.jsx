@@ -112,8 +112,10 @@ class RegistrationForm extends React.Component {
       var someProperty = { ...this.state.formControls };
       switch (jsonData.error) {
         case 0:
+          localStorage.setItem('firstName', jsonData.credentials.firstName);
+          localStorage.setItem('lastName', jsonData.credentials.lastName);
           this.setState({ isFormValid: true });
-          alert(decodeURIComponent(jsonData.messages));
+          window.location.reload();
           break;
         case 1:
           someProperty.email.errorMessage = jsonData.messages;

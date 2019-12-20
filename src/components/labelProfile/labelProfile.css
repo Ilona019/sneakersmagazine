@@ -18,7 +18,7 @@
   padding: 8px;
   margin-top: 10px;
   background: #222222;
-  height: 90px;
+  height: auto;
 }
 
 .labelProfile-class:hover .icons-block {
@@ -26,7 +26,7 @@
   position: absolute;
   top: 20px;
   z-index: 9999;
-  width: 40px;
+  width: 38px;
 }
 
 .iconsAuth-container {
