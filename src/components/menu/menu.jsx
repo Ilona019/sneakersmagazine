@@ -1,8 +1,9 @@
-import React from 'react';
+import React, {useState} from 'react';
 import './menu.css';
 import Price from './../price/price'
 
 function Menu(){
+
     let menus = [
             {
                 name: "Бренд",
@@ -65,9 +66,6 @@ function Menu(){
             },
         ]
 
-        
-        // "Цена"
-
         return (
             <div className = "slider-class">
             <nav className = "nav">
@@ -89,30 +87,6 @@ function Menu(){
             <Price />
             </div>
         );
-
-    // return (
-    //     <nav className = "nav">
-    //         <ul className = "menu">
-    //         {menus.map((value, index) => {
-    //             return (
-    //                 <li key = {index} className = "li-menu">
-    //                     <a href = "#" className = "ac">{value.name}</a>
-    //                     <ul className = "submenu">
-    //                         {value.nameSubmenu ? value.nameSubmenu.map((v, i) => {
-    //                             return (
-    //                                 <li key = {i} className = "li-submenu">
-    //                                     <a href = "#">{v}</a>
-    //                                 </li>
-    //                             )
-    //                         }) : <></>}
-    //                     </ul>
-    //                 </li>
-    //             );
-    //             })
-    //         }
-    //         </ul>
-    //     </nav>
-    // );
   }
 
 export default Menu;

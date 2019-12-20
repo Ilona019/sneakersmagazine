@@ -10,10 +10,6 @@ import shoppingCart from './../../images/shopping-cart.svg';
 import ImgShoppingCart from './../imgShoppingCart/imgShoppingCart';
 import ButtonCount from './../button-count/button-count';
 
-// import PopUpWindows from '../modal/popUpWindows';
-// import LoginForm from '../forms/loginForm';
-// import RegistrationForm from '../forms/registrationForm';
-
 function Header() {
   return (
       <div className = "header-class" >
@@ -21,14 +17,12 @@ function Header() {
         <Search />
         <div className = "image-heart">
           <ImgHeart way = {heart}/>
-          <ButtonCount count = "0" />
+          <ButtonCount />
         </div>
        <div className = "shop-cart">
         <ImgShoppingCart way = {shoppingCart}/>
-        <ButtonCount count = "0" />
+        <ButtonCount />
        </div>
-        {/* <PopUpWindows content={<LoginForm/>}  title="Войти" classHeightContainer="shortContainer" nameIcon="fas fa-sign-in-alt"/>
-        <PopUpWindows content={<RegistrationForm />} title="Регистрация" classHeightContainer="longContainer" nameIcon="fas fa-user-plus"/> */}
         <LabelProfile />
       </div>
   );

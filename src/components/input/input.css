@@ -46,7 +46,7 @@
   border-color: #e91e14;
 }
 
-input:focus {
+.Input input:focus {
   border-color: #0052b6;
   border-radius: 5px;
 }

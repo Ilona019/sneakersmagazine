@@ -1,7 +1,21 @@
-.imgheart {
+.img-white-heart {
     position: absolute;
-    width: 50px;
-    right: 10px;
+    width: 80px;
+    right: -20px;
     top: 10px;
     cursor: pointer;
+
+    stroke-width: 20px;
+    stroke: dodgerblue;
+    fill: white;
+}
+
+.img-blue-heart {
+    position: absolute;
+    width: 80px;
+    right: -20px;
+    top: 10px;
+    cursor: pointer;
+
+    fill: dodgerblue;
 }

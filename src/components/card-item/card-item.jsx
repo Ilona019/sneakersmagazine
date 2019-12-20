@@ -5,20 +5,20 @@ import LabelPrice from "../labelPrice/labelPrice";
 import LabelName from "../labelName/labelName";
 import LabelDescription from "../labelDescription/labelDescription";
 import ImgBlueHeart from '../imgBlueHeart/imgBlueHeart';
-import heartBlue from './../../images/heartBlue.svg';
 import {Link} from 'react-router-dom';
 
 function CardItem(props) {
   return (
-    <Link to="/cardlist" style = {{textDecoration: "none", color: "#222"}} >
+    
       <div className = "card-item-class">
-        <ImgBlueHeart way = {heartBlue} />
-        <Crossimage way = {props.image} />
+        <ImgBlueHeart />
+        <Link to="/cardlist" style = {{textDecoration: "none", color: "#222"}} >
+          <Crossimage way = {props.image} />
+        </Link>
         <LabelName name = {props.name}/>
         <LabelDescription description = {props.description}/>
         <LabelPrice c = {props.cost}/>
     </div>
- </Link>
   );
 }
 
