@@ -9,23 +9,34 @@ import pic2 from "../../images/cross/krossovki-adidas-yeezy-350-boost-v2-12857-r
 
 function Content() {
 
+  function drawCardProductFromDataBasse(){
+    fetch('https://sneakers-shop-back.herokuapp.com/main/catalog')
+    .then(response => {
+      response.json();
+      const obj = response.map((el) => <li>{el}</li>)
+    })}
+     
+  
   return (
       <div className = "content-class">
+        
+         <CardItem />
+        {/* {/* <CardItem image = {pic} cost = "13 900" name = "Adidas Originals 3564759" description = "Какое то описание супер-пупер офигенно красивых кросcовок"/>
+        <CardItem image = {pic2} cost = "7 500" name = "Adidas Originals 3564759" description = "Какое то описание супер-пупер офигенно красивых кросcовок"/>
+        <CardItem image = {pic2} cost = "7 500" name = "Adidas Originals 3564759" description = "Какое то описание супер-пупер офигенно красивых кросcовок"/> */}
+        {/* <CardItem image = {pic} cost = "13 900" name = "Adidas Originals 3564759" description = "Какое то описание супер-пупер офигенно красивых кросcовок"/>
         <CardItem image = {pic} cost = "13 900" name = "Adidas Originals 3564759" description = "Какое то описание супер-пупер офигенно красивых кросcовок"/>
         <CardItem image = {pic2} cost = "7 500" name = "Adidas Originals 3564759" description = "Какое то описание супер-пупер офигенно красивых кросcовок"/>
         <CardItem image = {pic2} cost = "7 500" name = "Adidas Originals 3564759" description = "Какое то описание супер-пупер офигенно красивых кросcовок"/>
-        <CardItem image = {pic} cost = "13 900" name = "Adidas Originals 3564759" description = "Какое то описание супер-пупер офигенно красивых кросcовок"/>
-        <CardItem image = {pic} cost = "13 900" name = "Adidas Originals 3564759" description = "Какое то описание супер-пупер офигенно красивых кросcовок"/>
         <CardItem image = {pic2} cost = "7 500" name = "Adidas Originals 3564759" description = "Какое то описание супер-пупер офигенно красивых кросcовок"/>
         <CardItem image = {pic2} cost = "7 500" name = "Adidas Originals 3564759" description = "Какое то описание супер-пупер офигенно красивых кросcовок"/>
         <CardItem image = {pic2} cost = "7 500" name = "Adidas Originals 3564759" description = "Какое то описание супер-пупер офигенно красивых кросcовок"/>
         <CardItem image = {pic2} cost = "7 500" name = "Adidas Originals 3564759" description = "Какое то описание супер-пупер офигенно красивых кросcовок"/>
-        <CardItem image = {pic2} cost = "7 500" name = "Adidas Originals 3564759" description = "Какое то описание супер-пупер офигенно красивых кросcовок"/>
-        <CardItem image = {pic2} cost = "7 500" name = "Adidas Originals 3564759" description = "Какое то описание супер-пупер офигенно красивых кросcовок"/>
-        <CardItem image = {pic2} cost = "7 500" name = "Adidas Originals 3564759" description = "Какое то описание супер-пупер офигенно красивых кросcовок"/>
-      </div>
-      // тут видимо потом надо выводить в цикле
-  );
-}
+      //       <CardItem image = {pic2} cost = "7 500" name = "Adidas Originals 3564759" description = "Какое то описание супер-пупер офигенно красивых кросcовок"/> */}
+       </div>
+   );
+    }
+  
+
 
 export default Content;

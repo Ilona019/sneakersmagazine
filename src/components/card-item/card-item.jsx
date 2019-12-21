@@ -8,8 +8,13 @@ import ImgBlueHeart from '../imgBlueHeart/imgBlueHeart';
 import {Link} from 'react-router-dom';
 
 function CardItem(props) {
-  return (
+
+  // fetch('https://sneakers-shop-back.herokuapp.com/main/catalog')
+  //   .then(response => response.json())
+  //   .then(response => console.log(response))
     
+
+  return (
       <div className = "card-item-class">
         <ImgBlueHeart />
         <Link to="/cardlist" style = {{textDecoration: "none", color: "#222"}} >

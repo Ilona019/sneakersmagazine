@@ -24,7 +24,6 @@ function Header() {
         <ButtonCount />
        </div>
         <LabelProfile />
-      <Logger />
     </div>
   );
 }
