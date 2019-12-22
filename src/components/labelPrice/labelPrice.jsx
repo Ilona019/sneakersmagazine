@@ -3,7 +3,7 @@ import './labelPrice.css';
 
 function LabelPrice(props) {
   return (
-    <div className = "labelPrice-class">{props.c} руб.</div>
+    <div className = "labelPrice-class">{props.cost} руб.</div>
   );
 }
 

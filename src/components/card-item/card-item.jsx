@@ -8,8 +8,8 @@ import ImgBlueHeart from '../imgBlueHeart/imgBlueHeart';
 import {Link} from 'react-router-dom';
 
 function CardItem(props) {
+
   return (
-    
       <div className = "card-item-class">
         <ImgBlueHeart />
         <Link to="/cardlist" style = {{textDecoration: "none", color: "#222"}} >
@@ -17,7 +17,7 @@ function CardItem(props) {
         </Link>
         <LabelName name = {props.name}/>
         <LabelDescription description = {props.description}/>
-        <LabelPrice c = {props.cost}/>
+        <LabelPrice cost = {props.cost}/>
     </div>
   );
 }
