@@ -9,11 +9,6 @@ import {Link} from 'react-router-dom';
 
 function CardItem(props) {
 
-  // fetch('https://sneakers-shop-back.herokuapp.com/main/catalog')
-  //   .then(response => response.json())
-  //   .then(response => console.log(response))
-    
-
   return (
       <div className = "card-item-class">
         <ImgBlueHeart />
@@ -22,7 +17,7 @@ function CardItem(props) {
         </Link>
         <LabelName name = {props.name}/>
         <LabelDescription description = {props.description}/>
-        <LabelPrice c = {props.cost}/>
+        <LabelPrice cost = {props.cost}/>
     </div>
   );
 }
