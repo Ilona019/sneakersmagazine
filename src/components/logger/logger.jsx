@@ -21,11 +21,13 @@ class Logger extends React.Component {
     return typeof str === "undefined" || str === null || str === "";
   }
 
-  signOut() {
+  async signOut() {
     localStorage.removeItem("firstName");
     localStorage.removeItem("lastName");
     this.setState({ firstName: null });
     this.setState({ lastName: null });
+    var url = "http://sneakers-shop-back.herokuapp.com/auth/logout/";
+    await fetch(url);
   }
 
   render() {

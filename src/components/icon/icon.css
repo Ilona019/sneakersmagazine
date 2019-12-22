@@ -12,16 +12,33 @@
 
 .fa-user-plus,
 .fa-sign-in-alt,
-.fa-sign-out-alt {
+.fa-sign-out-alt,
+.fa-heart {
   display: block;
   color: #ffffff;
   margin: 5px auto;
 }
 
+.fa-heart {
+  margin: 0;
+  margin-top: 5px;
+}
+
 .fa-user-plus:hover,
 .fa-sign-in-alt:hover,
-.fa-times:hover,
 .fa-sign-out-alt:hover {
   color: #0566ff;
   transform: scale(1.2);
+}
+
+@keyframes pound {
+  50% {
+    transform: scale(1.2);
+  }
+}
+
+.fa-times:hover {
+  color: rgb(34, 144, 255);
+  animation: pound 0.5s linear;
+  animation-iteration-count: 2;
 }

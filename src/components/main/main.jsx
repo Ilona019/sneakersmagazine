@@ -4,7 +4,8 @@ import Menu from './../menu/menu';
 import Content from './../content/content';
 import Footer from './../footer/footer';
 import './main.css';
-import {BrowserRouter, Route} from 'react-router-dom';
+import {BrowserRouter, Route, Switch} from 'react-router-dom';
+import Cart from './../../pages/cart/cart';
 
 function Main() {
   return (
@@ -12,7 +13,12 @@ function Main() {
     <div className = "container">
         <Header />
         <Menu />
-        <Content />
+        <div className="content-class">
+          <Switch>
+            <Route path='/cart' component={Cart}/>
+            <Route path='/' component={Content}/>
+          </Switch>
+        </div>
         <Footer />
     </div>
   );

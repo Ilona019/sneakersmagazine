@@ -9,6 +9,7 @@ import ImgHeart from './../imgHeart/imgHeart';
 import shoppingCart from './../../images/shopping-cart.svg';
 import ImgShoppingCart from './../imgShoppingCart/imgShoppingCart';
 import ButtonCount from './../button-count/button-count';
+import Logger from "./../logger/logger";
 
 function Header() {
   return (
@@ -20,10 +21,9 @@ function Header() {
           <ButtonCount />
         </div>
        <div className = "shop-cart">
-        <ImgShoppingCart way = {shoppingCart}/>
+        <ImgShoppingCart way = {shoppingCart} url  = "/cart"/>
         <ButtonCount />
        </div>
-        <LabelProfile />
       <Logger />
     </div>
   );
