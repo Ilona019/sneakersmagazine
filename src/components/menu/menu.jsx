@@ -1,6 +1,9 @@
 import React, {useState} from 'react';
 import './menu.css';
+// import 'query-string';
 import Price from './../price/price'
+// import { url } from 'inspector';
+// const queryString = require('querystring');
 
 function Menu(){
 
@@ -33,6 +36,11 @@ function Menu(){
             },
             {
                 name: "Цвет",
+                // key: "color",
+                // colors: {
+                //     b: "чёрный",
+                //     w: "белый"
+                // },
                 nameSubmenu: [
                     "Черный",
                     "Белый",
@@ -66,6 +74,14 @@ function Menu(){
             },
         ]
 
+        function onClickToCheckMenuItems(value){
+            const url = 'https://sneakers-shop-back.herokuapp.com/main/catalog?filter=' + value;
+            fetch(url, {
+                method: 'POST'
+            });
+            console.log(url);
+        }
+
         return (
             <div className = "slider-class">
             <nav className = "nav">
@@ -75,7 +91,7 @@ function Menu(){
                         <nav className = "n2">
                             {value.nameSubmenu.map((v, i) => {
                                 return(
-                                    <div className = "sub-item">{v}
+                                    <div className = "sub-item" onClick = {(element) => onClickToCheckMenuItems(value)}>{v}
                                     </div>
                                 )
                             })}
