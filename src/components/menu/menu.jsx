@@ -1,9 +1,6 @@
 import React, {useState} from 'react';
 import './menu.css';
-// import 'query-string';
 import Price from './../price/price'
-// import { url } from 'inspector';
-// const queryString = require('querystring');
 
 function Menu(){
 
@@ -14,7 +11,6 @@ function Menu(){
                      "Adidas",
                      "Nike",
                      "Reebok",
-                     "New Balance",
                      "Puma",
                      "Jordan",
                      "Vans",
@@ -36,11 +32,6 @@ function Menu(){
             },
             {
                 name: "Цвет",
-                // key: "color",
-                // colors: {
-                //     b: "чёрный",
-                //     w: "белый"
-                // },
                 nameSubmenu: [
                     "Черный",
                     "Белый",
@@ -64,41 +55,180 @@ function Menu(){
                     "Танцы"
                 ]
             },
-            {
-                name: "Сортировка",
-                nameSubmenu: [
-                    "Сортировать по возрастанию цены",
-                    "Сортировать по убыванию цены",
-                    "Новинки"
-                ]
-            },
+            // {
+            //     name: "Сортировка",
+            //     nameSubmenu: [
+            //         "Сортировать по возрастанию цены",
+            //         "Сортировать по убыванию цены",
+            //         "Новинки"
+            //     ]
+            // },
         ]
 
-        function onClickToCheckMenuItems(value){
-            const url = 'https://sneakers-shop-back.herokuapp.com/main/catalog?filter=' + value;
+        let paramsString = "";
+        let count = 0;
+        //отвечает за переименование элементов меню как в бд
+        let field = "";
+        //отвечает за переименование элементов подменю как в бд
+        let field2 = "";
+
+        function onClickToCheckMenuItems(v){
+            const url = 'https://sneakers-shop-back.herokuapp.com/main/catalog/?' + v;
             fetch(url, {
                 method: 'POST'
             });
             console.log(url);
         }
 
+        function getEnglishName(e){
+            if(e == "Вид спорта"){
+                return "task";
+            }
+            else if (e == "Пол"){
+                return "gender";
+            }
+            else if (e == "Мужчины"){
+                return "M";
+            }
+            else if (e == "Женщины"){
+                return "W";
+            }
+            else if (e == "Бренд"){
+                return "brand";
+            }
+            else if (e == "Размер"){
+                return "size";
+            }
+            else if (e == "Цвет"){
+                return "color";
+            }
+            else if (e == "Стиль"){
+                return "style";
+            }
+            else if(e == "Мужчины"){
+                return "M";
+            }
+            else if(e == "Adidas"){
+                return "adidas";
+            }
+            else if(e == "Asics"){
+                return "asics";
+            }
+            else if(e == "Reebok"){
+                return "reebok";
+            }
+            else if(e == "Vans"){
+                return "vans";
+            }
+            else if(e == "Puma"){
+                return "puma";
+            }
+            else if(e == "Nike"){
+                return "nike";
+            }
+            else if(e == "Jordan"){
+                return "jordan";
+            }
+            else if(e == "36"){
+                return "36";
+            }
+            else if(e == "37"){
+                return "37";
+            }
+            else if(e == "38"){
+                return "38";
+            }
+            else if(e == "39"){
+                return "39";
+            }
+            else if(e == "40"){
+                return "40";
+            }
+            else if(e == "41"){
+                return "41";
+            }
+            else if(e == "42"){
+                return "42";
+            }
+            else if(e == "43"){
+                return "43";
+            }
+            else if(e == "44"){
+                return "44";
+            }
+            else if(e == "45"){
+                return "45";
+            }
+            else if(e == "Черный"){
+                return "black";
+            }
+            else if(e == "Белый"){
+                return "white";
+            }
+            else if(e == "Цветной"){
+                return "multy";
+            }
+            else if(e == "Sport"){
+                return "sport";
+            }
+            else if(e == "Classics"){
+                return "classics";
+            }
+            else if(e == "Бег"){
+                return "run";
+            }
+            else if(e == "Йога"){
+                return "yoga";
+            }
+            else if(e == "Тренировки в зале"){
+                return "indoor";
+            }
+            else if(e == "Ходьба"){
+                return "go";
+            }
+            else if(e == "Танцы"){
+                return "dance";
+            }
+        }
         return (
             <div className = "slider-class">
             <nav className = "nav">
-                {menus.map((value, index) => {
+                {menus.map((value, index) => { 
+                    
+                        field= getEnglishName(value.name)
                     return(
                         <div className = "item">{value.name}
                         <nav className = "n2">
+                            
                             {value.nameSubmenu.map((v, i) => {
+                                
+                                // field2= getEnglishName(v);
+
+                                // value.nameSubmenu.map((v, i) => {
+                                let count = 0;
+                                if (count === 0) {
+                                    // paramsString =field + "=" + field2;
+                                    field2 = "Hello";
+                                    paramsString  = field2;
+                                    count = count + 1;
+                                }
+                                else{
+                                    //paramsString = paramsString + "&" + field + "=" + field2;
+                                    field2 = "Hello2";
+                                    paramsString  = field2;
+                                    count = count + 1;
+                                }
+                            
                                 return(
-                                    <div className = "sub-item" onClick = {(element) => onClickToCheckMenuItems(value)}>{v}
+                                    <div className = "sub-item" onClick = {(element) => onClickToCheckMenuItems(paramsString)}>{v}
                                     </div>
                                 )
                             })}
+
                             </nav>
                         </div>
                     )
-                })}
+            })}
             </nav>
             <Price />
             </div>
