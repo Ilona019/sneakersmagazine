@@ -2,13 +2,13 @@ import React from 'react';
 import './price.css';
 
 function Price() {
-  // const inputFrom = document.getElementsByClassName('input-from');
-  // const inputTo = document.getElementsByClassName('input-to');
+
+    let inputFrom = document.getElementsByClassName('input-from').value;
+    console.log(inputFrom);
 
   return (
     <div className = "input-price">
-        <input type = "number" className = "input-from" size = "5" maxLength = "10" placeholder = "от"></input>
-        <input type = "number" className = "input-to" size = "5" maxLength = "10" placeholder = "до"></input>
+        <input type = "number" className = "input-from" size = "10" maxLength = "15" placeholder = "Введите желаемую стоимость"></input>
     </div>
   );
 }

@@ -12,12 +12,12 @@
   background-color: #222222;
   position: absolute;
   padding: 5px;
-  border-radius: 20px;
-  border: 1px solid #0566ff;
+  border-radius: 5px;
+  border: 1px solid white;
   overflow: hidden;
   font-size: 12px;
   box-sizing: border-box;
-  box-shadow: 1px 1px 15px #0566ff;
+  /* box-shadow: 1px 1px 15px #0566ff; */
   z-index: 9999;
 }
 

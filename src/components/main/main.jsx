@@ -4,7 +4,7 @@ import Menu from './../menu/menu';
 import Content from './../content/content';
 import Footer from './../footer/footer';
 import './main.css';
-import {BrowserRouter, Route, Switch} from 'react-router-dom';
+import {Route, Switch} from 'react-router-dom';
 import Cart from './../../pages/cart/cart';
 
 function Main() {

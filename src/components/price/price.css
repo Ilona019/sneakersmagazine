@@ -7,18 +7,19 @@
     margin-right: 20px;
     padding: 5px 5px;
     height: 30px;
-    width: 40px;
+    width: 100px;
     border: 1px solid white;
     border-radius: 5px;
+    font-size: 12px;
 }
 
-.input-to {
+/* .input-to {
     padding: 5px 5px;
     height: 30px;
     width: 40px;
     border: 1px solid white;
     border-radius: 5px;
-}
+} */
 /* убираем стрелочки из input type = number */
 input[type="number"]::-webkit-outer-spin-button,
 input[type="number"]::-webkit-inner-spin-button {

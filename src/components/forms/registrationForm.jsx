@@ -17,8 +17,8 @@ class RegistrationForm extends React.Component {
       firstName: {
         value: "",
         type: "text",
-        label: "Имя/First name",
-        errorMessage: "Имя может содержать только буквы.",
+        label: "Имя",
+        errorMessage: "Имя может содержать только буквы",
         valid: false,
         touched: false,
         validation: {
@@ -29,8 +29,8 @@ class RegistrationForm extends React.Component {
       lastName: {
         value: "",
         type: "text",
-        label: "Фамилия/Last name",
-        errorMessage: "Фамилия может содержать только буквы.",
+        label: "Фамилия",
+        errorMessage: "Фамилия может содержать только буквы",
         valid: false,
         touched: false,
         validation: {
@@ -41,8 +41,8 @@ class RegistrationForm extends React.Component {
       birthday: {
         value: "",
         type: "date",
-        label: "Дата рождения/Date of birth",
-        errorMessage: "Введённая дата некорректна.",
+        label: "Дата рождения",
+        errorMessage: "Введённая дата некорректна",
         valid: false,
         touched: false,
         validation: {
@@ -53,8 +53,8 @@ class RegistrationForm extends React.Component {
       telephone: {
         value: "",
         type: "tel",
-        label: "Телефон/Mobile phone +7",
-        errorMessage: "Неправильный формат номера.",
+        label: "Телефон +7",
+        errorMessage: "Неверный формат ввода",
         valid: false,
         touched: false,
         validation: {
@@ -66,7 +66,7 @@ class RegistrationForm extends React.Component {
         value: "",
         type: "email",
         label: "Email",
-        errorMessage: "Введите корректный email.",
+        errorMessage: "Введите корректный email",
         valid: false,
         touched: false,
         validation: {
@@ -77,8 +77,8 @@ class RegistrationForm extends React.Component {
       password: {
         value: "",
         type: "password",
-        label: "Пароль/Password",
-        errorMessage: "Введите корректный пароль. Длина больше 6 символов.",
+        label: "Пароль",
+        errorMessage: "Пароль должен содержать больше 6 символов",
         valid: false,
         touched: false,
         validation: {
