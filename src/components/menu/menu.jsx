@@ -65,12 +65,12 @@ function Menu(){
             // },
         ]
 
-        let paramsString = "";
-        let count = 0;
+        let firstParam = true;
+        // let count = 0;
         //отвечает за переименование элементов меню как в бд
-        let field = "";
+        // let field = "";
         //отвечает за переименование элементов подменю как в бд
-        let field2 = "";
+        // let field2 = "";
 
         function onClickToCheckMenuItems(v){
             const url = 'https://sneakers-shop-back.herokuapp.com/main/catalog/?' + v;
@@ -80,7 +80,23 @@ function Menu(){
             console.log(url);
         }
 
+        // function onClickToCheckMenuItems(v, str, y){
+        //     let url;
+        //     if (str){
+        //          url = 'https://sneakers-shop-back.herokuapp.com/main/catalog/?' + v + "=" + y; 
+        //     }
+        //     else{
+        //          url = 'https://sneakers-shop-back.herokuapp.com/main/catalog/?'+ str+ "&" + v + "=" +y;
+        //     }
+        //     // const url = 'https://sneakers-shop-back.herokuapp.com/main/catalog/?' + v;
+        //     fetch(url, {
+        //         method: 'POST'
+        //     });
+        //     console.log(url);
+        // }
+
         function getEnglishName(e){
+            // console.log("из метода е" + e);
             if(e == "Вид спорта"){
                 return "task";
             }
@@ -194,33 +210,20 @@ function Menu(){
             <div className = "slider-class">
             <nav className = "nav">
                 {menus.map((value, index) => { 
-                    
-                        field= getEnglishName(value.name)
+                        // field= getEnglishName(value.name)
                     return(
                         <div className = "item">{value.name}
                         <nav className = "n2">
                             
                             {value.nameSubmenu.map((v, i) => {
-                                
+                                // field= getEnglishName(value.name)
                                 // field2= getEnglishName(v);
-
-                                // value.nameSubmenu.map((v, i) => {
-                                let count = 0;
-                                if (count === 0) {
-                                    // paramsString =field + "=" + field2;
-                                    field2 = "Hello";
-                                    paramsString  = field2;
-                                    count = count + 1;
-                                }
-                                else{
-                                    //paramsString = paramsString + "&" + field + "=" + field2;
-                                    field2 = "Hello2";
-                                    paramsString  = field2;
-                                    count = count + 1;
-                                }
-                            
+                                // console.log(field);
+                                // console.log(field2);
+                                // paramsString = field + "="+ field2;
+                                // console.log(paramsString);
                                 return(
-                                    <div className = "sub-item" onClick = {(element) => onClickToCheckMenuItems(paramsString)}>{v}
+                                    <div className = "sub-item" onClick = {(element) => onClickToCheckMenuItems(getEnglishName(value.name) + "=" + getEnglishName(v))}>{v}
                                     </div>
                                 )
                             })}

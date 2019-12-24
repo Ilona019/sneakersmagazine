@@ -27,7 +27,7 @@ function Search() {
 
   //отправляем пост запрос на поиск в БД
   function sendPostFetchWithSearch(v){
-    const url = 'https://sneakers-shop-back.herokuapp.com/main/catalog/?search=' + v;
+    const url = 'https://sneakers-shop-back.herokuapp.com/main/catalog/search/?query=' + v;
     fetch(url, {
       method: 'POST'
     });
