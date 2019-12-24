@@ -3,17 +3,28 @@ import './content.css';
 import CardItem from "./../card-item/card-item";
 
 function Content() {
+  //задаем начальное состояние данных
   const [data, setData] = useState([]);
-
-  function responseMap(){
+  //фозвращаем данные с бека на главную страницу при загрузке - все возможные товары
+  function responseMainPage(){
     const url = 'https://sneakers-shop-back.herokuapp.com/main/catalog';
     fetch(url)
       .then(response => response.json())
       // .then(response => console.log(response))
       .then(response => setData(response));
   }
+  //возвращаем стоимость товара с бэка
+  function responsePrice(){
+    const url = "https://sneakers-shop-back.herokuapp.com/main/catalog";
+    fetch(url)
+      .then(response => response.json)
+      .then(response => console.log(response))
+      .then(response => setData(response))
+  }
   
-  responseMap();
+  responseMainPage();
+  responsePrice();
+  // if(responseMainPage())
   return (     
       <div className = "content-class">
         {data.map((item) => {
