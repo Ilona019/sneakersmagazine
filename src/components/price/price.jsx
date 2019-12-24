@@ -2,26 +2,17 @@ import React from 'react';
 import './price.css';
 
 function Price(props) {
-  console.log(props)
   //метод который при клике на enter (13) отправляет пост запрос цены на сервер
   function clickOnEnterToSendFetch(){
     let inputFrom = document.querySelector(".input-from");
     inputFrom.addEventListener('keydown', function(e) {
       if (e.keyCode === 13) {
-        console.log(this.props.znach)
-        this.props.znach(inputFrom.value);
+        props.sendPostFetchWithPrice(inputFrom.value);
       }
     })
   }
-  //сам фетч с ценой
-  // function sendPostFetchWithPrice(v){
-  //   const url = 'https://sneakers-shop-back.herokuapp.com/main/catalog/?cost=' + v;
-  //   fetch(url, {
-  //     method: 'POST'
-  //   });
-  //   console.log(url);
-  // }
 
+  
   return (
     <div className = "input-price">
         <input type = "number" onClick = {clickOnEnterToSendFetch} className = "input-from" size = "10" maxLength = "15" placeholder = "Введите желаемую стоимость"></input>

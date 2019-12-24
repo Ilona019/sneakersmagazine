@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import Header from './../header/header';
 import Menu from './../menu/menu';
 import Content from './../content/content';
@@ -7,7 +7,8 @@ import './main.css';
 import {Route, Switch} from 'react-router-dom';
 import Cart from './../../pages/cart/cart';
 
-function Main() {
+function Main(props) {
+
   return (
     // <div className="app-wrapper">
     <div className = "container">

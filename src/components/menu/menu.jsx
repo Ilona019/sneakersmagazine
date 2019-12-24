@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import './menu.css';
 import Price from './../price/price'
 
-function Menu(){
+function Menu(props){
 
     let menus = [
             {
@@ -79,21 +79,6 @@ function Menu(){
             });
             console.log(url);
         }
-
-        // function onClickToCheckMenuItems(v, str, y){
-        //     let url;
-        //     if (str){
-        //          url = 'https://sneakers-shop-back.herokuapp.com/main/catalog/?' + v + "=" + y; 
-        //     }
-        //     else{
-        //          url = 'https://sneakers-shop-back.herokuapp.com/main/catalog/?'+ str+ "&" + v + "=" +y;
-        //     }
-        //     // const url = 'https://sneakers-shop-back.herokuapp.com/main/catalog/?' + v;
-        //     fetch(url, {
-        //         method: 'POST'
-        //     });
-        //     console.log(url);
-        // }
 
         function getEnglishName(e){
             // console.log("из метода е" + e);
