@@ -11,7 +11,7 @@ function Content() {
       .then(response => response.json())
       // .then(response => console.log(response))
       .then(response => setData(response));
-      }
+  }
   
   responseMap();
   return (     
