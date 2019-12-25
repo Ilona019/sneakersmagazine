@@ -1,0 +1,35 @@
+.func {
+  cursor: pointer;
+}
+
+.func.disabled {
+  cursor: not-allowed;
+}
+
+.fa-times {
+  color: #ffffff;
+}
+
+.fa-user-plus,
+.fa-sign-in-alt,
+.fa-sign-out-alt,
+.fa-heart {
+  display: block;
+  color: #ffffff;
+  margin: 5px auto;
+}
+
+.fa-heart {
+  margin: 0;
+  margin-top: 5px;
+}
+
+.fa-user-plus:hover,
+.fa-sign-in-alt:hover,
+.fa-sign-out-alt:hover {
+  color: lightgray;
+}
+
+.fa-times:hover {
+  color: lightgray;
+}

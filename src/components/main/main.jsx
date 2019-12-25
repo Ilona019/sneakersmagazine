@@ -1,24 +1,26 @@
-import React from 'react';
+import React, {useState} from 'react';
 import Header from './../header/header';
 import Menu from './../menu/menu';
 import Content from './../content/content';
 import Footer from './../footer/footer';
 import './main.css';
-import {BrowserRouter, Route} from 'react-router-dom';
+import {Route, Switch} from 'react-router-dom';
+import Cart from './../../pages/cart/cart';
 
-function Main() {
+function Main(props) {
+
   return (
     // <div className="app-wrapper">
     <div className = "container">
-      
-      <BrowserRouter>
-
         <Header />
         <Menu />
-        <Content />
+        <div className="content-class">
+          <Switch>
+            <Route path='/cart' component={Cart}/>
+            <Route path='/' component={Content}/>
+          </Switch>
+        </div>
         <Footer />
-        
-      </BrowserRouter> 
     </div>
   );
 }

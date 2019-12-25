@@ -1,0 +1,37 @@
+.btn {
+  outline: none;
+  display: inline-block;
+  margin-bottom: 20px;
+  padding: 10px 30px;
+  position: relative;
+  border: 1px solid #fff;
+  color: #fff;
+  cursor: pointer;
+  text-transform: uppercase;
+  background-color: #222;
+  border-radius: 5px;
+}
+
+.btn[disabled] {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.btn-back-in-catalog {
+  color: #003b99;
+  text-decoration: none;
+  border: 2px solid #0566ff;
+  text-align: center;
+  padding: 20px 0;
+}
+
+.btn-back-in-catalog:hover {
+  color: #ffffff;
+  background-color: rgb(5, 102, 255, 0.3);
+}
+
+.align-center-btn {
+  position: relative;
+  left: 50%;
+  transform: translate(-50%, 0);
+}
