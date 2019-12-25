@@ -5,6 +5,7 @@ import {BrowserRouter, Route, Switch} from 'react-router-dom';
 import './App.css';
 
 function App() {
+  let peremennaya;
   return (
     <div className="app-wrapper">
         <BrowserRouter>

@@ -6,7 +6,7 @@ function Content(props) {
   //задаем начальное состояние данных
   const [data, setData] = useState([]);
   const [data2, setData2] = useState([]);
-  //фозвращаем данные с бека на главную страницу при загрузке - все возможные товары
+  //возвращаем данные с бека на главную страницу при загрузке - все возможные товары
   function responseMainPage(){
     const url = 'https://sneakers-shop-back.herokuapp.com/main/catalog';
     fetch(url)
@@ -15,19 +15,21 @@ function Content(props) {
       .then(response => setData(response));
   }
 
-
-  function sendPostFetchWithPrice(v){
-    const url = 'https://sneakers-shop-back.herokuapp.com/main/catalog/?cost=' + v;
+  function getFetchWithPrice(){
+    
+    const url = 'https://sneakers-shop-back.herokuapp.com/main/catalog';
     fetch(url)
       .then(response => response.json())
+      //.then(response => console.log("BBBB",response))
       .then(response => setData(response))
   }
 
 
   // responseMainPage();
-  sendPostFetchWithPrice(5);
+  getFetchWithPrice();
   return (     
-      <div className = "content-class">
+      <div className = "content-class" >
+        {/* {console.log("Aaaa",data2)} */}
         {data.map((item) => {
           return( 
              <CardItem image = {item.img} cost = {item.cost} name = {item.name} description = {item.text}/>

@@ -7,11 +7,17 @@ function Price(props) {
     let inputFrom = document.querySelector(".input-from");
     inputFrom.addEventListener('keydown', function(e) {
       if (e.keyCode === 13) {
-        props.sendPostFetchWithPrice(inputFrom.value);
+        sendPostFetchWithPrice(inputFrom.value);
       }
     })
   }
 
+  function sendPostFetchWithPrice(v){
+    const url = 'https://sneakers-shop-back.herokuapp.com/main/catalog/?cost=' + v;
+    fetch(url, {
+      method: "POST"
+    })
+  }
   
   return (
     <div className = "input-price">
