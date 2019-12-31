@@ -11,8 +11,8 @@ class EmptyCart extends React.Component {
 
   render() {
     return (
-      <div className="basket-empty">
-        <h2 className="label-empty-basket">В вашей корзине пока ничего нет</h2>
+      <div className="cart-empty">
+        <h2 className="label-empty-cart">Ваша корзина пуста</h2>
         <Button className="btn-back-in-catalog" href="/">
           Начать покупки
         </Button>

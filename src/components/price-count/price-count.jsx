@@ -19,19 +19,19 @@ class PriceCount extends React.Component {
   render() {
     return (
       <>
-        <div className="basket-count">
-          <div className="basket-count__minus">
-            <span onClick={() => this.changeScore("Minus")}>-</span>
+        <div className="cart-count">
+          <div className="cart-count__minus" onClick={() => this.changeScore("Minus")}>
+            <span>-</span>
           </div>
-          <div className="basket-count__current">
+          <div className="cart-count__current">
             <input
               className="count-products-input"
               type="text"
               value={this.state.counter}
             />
           </div>
-          <div className="basket-count__plus">
-            <span onClick={() => this.changeScore("Plus")}>+</span>
+          <div className="cart-count__plus" onClick={() => this.changeScore("Plus")}>
+            <span>+</span>
           </div>
         </div>
       </>
