@@ -3,7 +3,7 @@ import './imgBlueHeart.css';
 
 import ButtonCount from './../button-count/button-count';
 
-function ImgBlueHeart(props) {
+function ImgBlueHeart({id, addCart}) {
   const [isLike, setLike] = useState(false);
 
   function changeLike(){
@@ -16,7 +16,7 @@ function ImgBlueHeart(props) {
   }
 
   return (
-  <svg className = {isLike ? "img-blue-heart" : "img-white-heart"} onClick = {changeLike} version="1.1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+  <svg className = {isLike ? "img-blue-heart" : "img-white-heart"} onClick={() => {addCart(id); changeLike()}} version="1.1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	  viewBox="0 0 1280 1024" enable-background="new 0 0 1280 1024" xmlSpace="preserve" >
 	<g>
 			<path d="M533.333,186.54c0,44.98-19.385,85.432-50.256,113.46h0.256L316.667,466.667C300,483.333,283.333,500,266.667,500

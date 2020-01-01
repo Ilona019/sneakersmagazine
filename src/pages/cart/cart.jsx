@@ -21,38 +21,42 @@ class Cart extends React.Component {
       "https://sneakers-shop-back.herokuapp.com/cart/read/"
     );
     const jsonData = await responce.json();
-    var productsCart = [      {
-      id: 0,
-      img: pic,
-      name: "Название",
-      size: 37,
-      price: 20000,
-      amount: 2,
-      sum: 40000
-    },
-    {
-      id: 1,
-      img: pic,
-      name: "Название",
-      size: 38,
-      price: 20000,
-      amount: 1,
-      sum: 20000
-    },
-    {
-      id: 2,
-      img: pic,
-      name: "Название",
-      size: 39,
-      price: 26000,
-      amount: 1,
-      sum: 26000
-    }];
-    this.setState({
-      // productsCart: jsonData.results,
-      productsCart: productsCart,
-      error: jsonData.error
-    });
+    var productsCart = [
+      {
+        _id: 0,
+        img: pic,
+        name: "Название",
+        size: 37,
+        cost: 20000,
+        count: 2,
+        sum: 40000
+      },
+      {
+        _id: 1,
+        img: pic,
+        name: "Название",
+        size: 38,
+        cost: 20000,
+        count: 1,
+        sum: 20000
+      },
+      {
+        _id: 2,
+        img: pic,
+        name: "Название",
+        size: 39,
+        cost: 26000,
+        count: 1,
+        sum: 26000
+      }
+    ];
+    if (jsonData.error > 0) {
+      this.setState({
+        productsCart: jsonData.results,
+        //productsCart: productsCart,
+        error: jsonData.error
+      });
+    }
   }
 
   getTableHeader = () => {
@@ -71,19 +75,19 @@ class Cart extends React.Component {
     }
     return headers;
   };
-  
+
   deleteProduct = (element, e) => {
     const productsCart = Object.assign([], this.state.productsCart);
     productsCart.splice(productsCart.indexOf(element), 1);
-    this.setState({productsCart:productsCart});
-  }
+    this.setState({ productsCart: productsCart });
+  };
 
   clearCart = () => {
     const productsCart = Object.assign([], this.state.productsCart);
     let lengthMassivaProductCart = this.state.productsCart.length;
-    productsCart.splice(0, lengthMassivaProductCart)
-    this.setState({productsCart:productsCart});
-  }
+    productsCart.splice(0, lengthMassivaProductCart);
+    this.setState({ productsCart: productsCart });
+  };
 
   render() {
     let cart;
@@ -97,17 +101,17 @@ class Cart extends React.Component {
                 <tr>{this.getTableHeader()}</tr>
               </thead>
               <tbody>
-                {this.state.productsCart.map(element =>
+                {this.state.productsCart.map(element => (
                   <RowCart
                     pic={element.img}
                     name={element.name}
                     size={element.size}
-                    price={element.price}
-                    amount={element.amount}
+                    cost={element.cost}
+                    count={element.count}
                     sum={element.sum}
-                    delEvent = {this.deleteProduct.bind(this, element)}
+                    delEvent={this.deleteProduct.bind(this, element)}
                   />
-                )}
+                ))}
               </tbody>
             </table>
           </main>
@@ -121,7 +125,7 @@ class Cart extends React.Component {
           </div>
           <div className="total">
             <h3 className="label-total">Общая стоимость</h3>
-            <span>80000 &#8381;</span>
+            <span>86000 &#8381;</span>
           </div>
           <div className="total">
             <h3 className="label-total">Количество товаров</h3>
@@ -131,7 +135,7 @@ class Cart extends React.Component {
       </section>
     );
 
-    if (this.state.error === 0 || this.state.productsCart.length === 0) cart = renderMessageEmpty;
+    if (this.state.productsCart.length === 0) cart = renderMessageEmpty;
     else cart = renderCart;
     return <>{cart}</>;
   }

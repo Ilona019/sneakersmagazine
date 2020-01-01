@@ -1,6 +1,7 @@
 import React from "react";
 import Icon from "../../components/icon/icon";
 import PriceCount from "../../components/price-count/price-count";
+import DropDownList from "../../components/dropDownList/dropDownList";
 
 class RowBasket extends React.Component {
   render() {
@@ -10,7 +11,7 @@ class RowBasket extends React.Component {
           <img
             className="cart-table__link product"
             src={this.props.pic}
-            atl="Продукт"
+            atl="Товар"
           ></img>
         </td>
         <td>
@@ -19,21 +20,20 @@ class RowBasket extends React.Component {
           </a>
         </td>
         <td>
-        <span>{this.props.size}</span>
+          <DropDownList />
         </td>
         <td className="cart-table__price">
-          <span>{this.props.price} &#8381;</span>
+          <span>{this.props.cost} &#8381;</span>
         </td>
         <td className="cart-price__count">
-          <PriceCount currentCount={this.props.amount} />
+          <PriceCount currentCount={this.props.count} />
         </td>
         <td className="cart-table__total">
           <span>{this.props.sum} &#8381;</span>
         </td>
         <td className="cart-table__remove">
           <span>
-            {" "}
-            <Icon name="times" size={1.1} onClick={this.props.delEvent}/>
+            <Icon name="times" size={1.1} onClick={this.props.delEvent} />
           </span>
         </td>
       </tr>

@@ -38,7 +38,7 @@ th {
 }
 
 .cart-table td {
-  border-top: 5px double #ffffff;
+  border-top: 1px solid #ffffff;
   padding: 15px;
   font-size: 15px;
 }
@@ -130,6 +130,7 @@ th {
   max-width: 45px;
   color: #ffffff;
   text-align: center;
+  font-size: 20px;
 }
 
 .cart-count__plus {
@@ -138,7 +139,7 @@ th {
 }
 
 .cart-count__minus {
-  background-color: #ffffff;
+  background-color: rgb(255, 255, 255, 0.5);
 }
 
 .cart-table__remove {
