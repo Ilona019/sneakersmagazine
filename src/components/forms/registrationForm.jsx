@@ -1,8 +1,9 @@
 import React from "react";
 import Button from "../button/button";
 import Input from "../input/input";
-import {ValidateControlLogin} from "./validateControlLogin";
+import { ValidateControlLogin } from "./validateControlLogin";
 import is from "is_js";
+import { addProductsGuestCart } from "./checkLocalStorage";
 
 class RegistrationForm extends React.Component {
   constructor(props) {
@@ -112,9 +113,16 @@ class RegistrationForm extends React.Component {
       var someProperty = { ...this.state.formControls };
       switch (jsonData.error) {
         case 0:
-          localStorage.setItem('firstName', jsonData.credentials.firstName);
-          localStorage.setItem('lastName', jsonData.credentials.lastName);
+          localStorage.setItem(
+            "firstName",
+            this.state.formControls.firstName.value
+          );
+          localStorage.setItem(
+            "lastName",
+            this.state.formControls.lastName.value
+          );
           this.setState({ isFormValid: true });
+          addProductsGuestCart();
           window.location.reload();
           break;
         case 1:
@@ -137,11 +145,11 @@ class RegistrationForm extends React.Component {
   };
 
   validateControl(value, validation) {
-
     let isValid = ValidateControlLogin(value, validation);
 
     if (validation.isName) {
-      isValid = (value.match(/^[А-Яа-я]+$/) || value.match(/^[A-Za-z]+$/)) && isValid;
+      isValid =
+        (value.match(/^[А-Яа-я]+$/) || value.match(/^[A-Za-z]+$/)) && isValid;
     }
 
     if (validation.required) {
@@ -164,12 +172,12 @@ class RegistrationForm extends React.Component {
   }
 
   onChangeHandler = (event, controlName) => {
-    const formControls = { ...this.state.formControls }
+    const formControls = { ...this.state.formControls };
     const control = {
       ...formControls[controlName]
     };
 
-    control.value = event.target.value
+    control.value = event.target.value;
     control.touched = true;
     control.valid = this.validateControl(control.value, control.validation);
 
@@ -212,7 +220,7 @@ class RegistrationForm extends React.Component {
         {this.renderInputs()}
         <br></br>
         <Button
-          className = "align-center-btn"
+          className="align-center-btn"
           type="submit"
           onClick={this.registrationHandler}
           disabled={!this.state.isFormValid}

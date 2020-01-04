@@ -56,6 +56,12 @@ class Cart extends React.Component {
         //productsCart: productsCart,
         error: jsonData.error
       });
+    } else if (jsonData.error === 0) {
+      this.setState({
+        error: jsonData.error
+      });
+    } else {
+      alert(jsonData.messages);
     }
   }
 
@@ -80,14 +86,38 @@ class Cart extends React.Component {
     const productsCart = Object.assign([], this.state.productsCart);
     productsCart.splice(productsCart.indexOf(element), 1);
     this.setState({ productsCart: productsCart });
+
+    // fetch("http://sneakers-shop-back.herokuapp.com/cart/delete_one/", {
+    //   method: "POST",
+    //   body: JSON.stringify(element._id),
+    //   headers: {
+    //     "Content-Type": "application/json"
+    //   }
+    // });
   };
 
-  clearCart = () => {
+  async clearCart() {
     const productsCart = Object.assign([], this.state.productsCart);
     let lengthMassivaProductCart = this.state.productsCart.length;
     productsCart.splice(0, lengthMassivaProductCart);
     this.setState({ productsCart: productsCart });
-  };
+    
+    // let response = await fetch('http://sneakers-shop-back.herokuapp.com/cart/delete_all/');
+    // let jsonData = await response.json();
+    // switch (jsonData.error) {
+    //   case 0:
+    //     this.setState({
+    //       productsCart: jsonData.results,
+    //       error: jsonData.error
+    //     });
+    //     break;
+    //   default:
+    //     alert(jsonData.messages);
+    //     this.setState({
+    //       error: jsonData.error
+    //     });
+    //   }
+  }
 
   render() {
     let cart;

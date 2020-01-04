@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./content.css";
 import CardItem from "./../card-item/card-item";
 import { element } from "prop-types";
+import { userIsRegistered, cartGuestIsEmpty } from "../forms/checkLocalStorage";
 
 function Content(props) {
   //задаем начальное состояние данных
@@ -26,6 +27,18 @@ function Content(props) {
         "Content-Type": "application/json"
       }
     });
+
+    if (!userIsRegistered()) {
+      if (cartGuestIsEmpty()) {
+        var cartGuest = [];
+        cartGuest.push(id);
+        localStorage.setItem("cartGuest", JSON.stringify(cartGuest));
+      } else if (!cartGuestIsEmpty()) {
+        let cartGuest = JSON.parse(localStorage.getItem("cartGuest"));
+        cartGuest.push(id);
+        localStorage.setItem("cartGuest", JSON.stringify(cartGuest));
+      }
+    }
   };
 
   useEffect(() => {
@@ -43,9 +56,10 @@ function Content(props) {
   return (
     <div className="content-class">
       {/* {console.log("Aaaa",data2)} */}
-      {data.map(item => {
+      {data.map((item , i)=> {
         return (
           <CardItem
+            key = {i}
             image={item.img}
             cost={item.cost}
             name={item.name}

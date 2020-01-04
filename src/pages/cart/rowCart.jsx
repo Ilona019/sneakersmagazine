@@ -11,7 +11,7 @@ class RowBasket extends React.Component {
           <img
             className="cart-table__link product"
             src={this.props.pic}
-            atl="Товар"
+            alt="Товар"
           ></img>
         </td>
         <td>

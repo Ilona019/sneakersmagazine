@@ -22,11 +22,10 @@ class Logger extends React.Component {
   }
 
   async signOut() {
-    localStorage.removeItem("firstName");
-    localStorage.removeItem("lastName");
+    localStorage.clear();
     this.setState({ firstName: null });
     this.setState({ lastName: null });
-    var url = "http://sneakers-shop-back.herokuapp.com/auth/logout/";
+    var url = "https://sneakers-shop-back.herokuapp.com/auth/logout/";
     await fetch(url);
   }
 
