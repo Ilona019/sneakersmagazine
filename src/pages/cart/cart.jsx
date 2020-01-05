@@ -4,6 +4,8 @@ import pic from "../../images/cross/adidas-yeezy-boost-350-v2-trfrm_01-1200x800-
 import Button from "../../components/button/button";
 import EmptyCart from "./emptyCart";
 import RowCart from "./rowCart";
+import Tooltip from "../../components/tooltip/tooltip";
+import PopUpWindows from "../../components/modal/popUpWindows";
 
 class Cart extends React.Component {
   constructor(props) {
@@ -74,7 +76,24 @@ class Cart extends React.Component {
       "Цена",
       "Количество",
       "Сумма",
-      ""
+      <>
+        <Tooltip position="right" content="Очистить">
+          <PopUpWindows
+            content={
+              <>
+                "Вы точно хотите удалить все товары? Отменить действие будет
+                невозможно"
+                <div className="btn-clear">
+                  <Button onClick={this.clearCart}>Очистить корзину</Button>
+                </div>
+              </>
+            }
+            title="Удаление всех товаров"
+            nameIcon="far fa-trash-alt"
+            sizeIcon={1}
+          />
+        </Tooltip>
+      </>
     ];
     for (let header of rowHeader) {
       headers.push(<th>{header}</th>);
@@ -101,7 +120,7 @@ class Cart extends React.Component {
     let lengthMassivaProductCart = this.state.productsCart.length;
     productsCart.splice(0, lengthMassivaProductCart);
     this.setState({ productsCart: productsCart });
-    
+
     // let response = await fetch('http://sneakers-shop-back.herokuapp.com/cart/delete_all/');
     // let jsonData = await response.json();
     // switch (jsonData.error) {
@@ -149,9 +168,6 @@ class Cart extends React.Component {
         <div className="orders-transition-block">
           <div className="btn-orders">
             <Button className="invert">Перейти к оформлению</Button>
-          </div>
-          <div className="btn-orders">
-            <Button onClick={this.clearCart}>Очистить корзину</Button>
           </div>
           <div className="total">
             <h3 className="label-total">Общая стоимость</h3>

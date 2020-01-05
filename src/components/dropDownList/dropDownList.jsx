@@ -3,16 +3,16 @@ import  "./dropDownList.css";
 
 class DropDownList extends React.Component {
   state = {
-    user: 37,
+    currentItem: this.props.defaultValue,
   };
 
-  getListSizes() {
-    let listSizes = [];
-    let sizes = [36, 37, 38, 39, 40, 41, 42, 43, 44, 45];
-    for (let item of sizes) {
-        listSizes.push(<option value={item}>{item}</option>);
+  getListItems() {
+    let listItems = [];
+    let list = this.props.list;
+    for (let item of list) {
+        listItems.push(<option value={item}>{item}</option>);
       }
-      return listSizes;
+      return listItems;
   }
 
   render() {
@@ -20,10 +20,10 @@ class DropDownList extends React.Component {
       <>
         <label>
           <select
-            value={this.state.user}
-            onChange={e => this.setState({ user: e.target.value })}
+            value={this.state.currentItem}
+            onChange={e => this.setState({ currentItem: e.target.value })}
           >
-            {this.getListSizes()}
+            {this.getListItems()}
           </select>
         </label>
       </>

@@ -6,7 +6,7 @@ import { addProductsGuestCart } from "./checkLocalStorage";
 
 class LoginForm extends React.Component {
   constructor(props) {
-    super(props);
+    super(props); 
     this.loginHandler = this.loginHandler.bind(this);
     this.submitHandler = this.submitHandler.bind(this);
   }

@@ -9,18 +9,18 @@ class RowBasket extends React.Component {
       <tr>
         <td className="cart-table__product">
           <img
-            className="cart-table__link product"
+            className="cart-table__name product"
             src={this.props.pic}
             alt="Товар"
           ></img>
         </td>
         <td>
-          <a className="cart-table__link" href="/cart">
+          <div className="cart-table__name">
             {this.props.name}
-          </a>
+          </div>
         </td>
         <td>
-          <DropDownList />
+          <DropDownList list={[36, 37, 38, 39, 40, 41, 42, 43, 44, 45]} defaultValue= {37}/>
         </td>
         <td className="cart-table__price">
           <span>{this.props.cost} &#8381;</span>

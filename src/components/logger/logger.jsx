@@ -39,6 +39,7 @@ class Logger extends React.Component {
             title="Войти"
             classHeightContainer="shortContainer"
             nameIcon="fas fa-sign-in-alt"
+            sizeIcon={2}
           />
         </Tooltip>
         <Tooltip position="bottom" content="Зарегистрироваться">
@@ -47,6 +48,7 @@ class Logger extends React.Component {
             title="Регистрация"
             classHeightContainer="longContainer"
             nameIcon="fas fa-user-plus"
+            sizeIcon={2}
           />
         </Tooltip>
       </>
