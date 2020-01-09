@@ -8,10 +8,11 @@ import ImgHeart from './../imgHeart/imgHeart';
 import shoppingCart from './../../images/shopping-cart.svg';
 import ImgShoppingCart from './../imgShoppingCart/imgShoppingCart';
 import ButtonCount from './../button-count/button-count';
-import Logger from "./../logger/logger";
+import Label from './../label/label';
 
-function Header() {
-  return (
+class Header extends React.Component {
+  render(){
+    return (
       <div className = "header-class" >
         <Logo />
         <Search />
@@ -23,9 +24,10 @@ function Header() {
         <ImgShoppingCart way = {shoppingCart} url  = "/cart"/>
         <ButtonCount />
        </div>
-      <Logger />
+      <Label className = "labelProfile-class" nameOfLabel = "Профиль"/>
     </div>
   );
+  }
 }
 
 export default Header;

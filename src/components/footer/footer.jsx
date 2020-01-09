@@ -1,8 +1,9 @@
 import React from 'react';
 import './footer.css';
 
-function Footer() {
-  return (
+class Footer extends React.Component {
+  render(){
+    return (
       <div className = "footer-class">
           <div className = "tech">ТЕХПОДДЕРЖКА:</div>
           <div className = "block">
@@ -11,6 +12,7 @@ function Footer() {
           </div>
       </div>
   );
+  }
 }
 
 export default Footer;

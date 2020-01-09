@@ -5,15 +5,11 @@ import Description from './../card-product/descriprion/description';
 import Type from './../card-product/type/type';
 import Price from './../card-product/price/price';
 import LabelSizeAndCount from './../card-product/labelSizeAndCount/labelSizeAndCount';
-import BtnSize from './../card-product/btn-size/btn-size';
-import BtnAddToChosen from './../card-product/btn-addtochosen/btn-addtochoden';
-import BtnCheckout from './../card-product/btn-checkout/btn-checkout';
-import BtnPlusMinus from './../card-product/btn-plus-minus/btn-plus-minus';
+import Btn from './../Btn/Btn';
 import BtnIncrease from './../card-product/btn-increase/btn-increase';
 
 import i from './../../images/cross/adidas-yeezy-boost-350-v2-trfrm_01-1200x800-1200x800_0.jpg';
-
-
+// import i from './../../images/boot1.gif';
 function CardProduct(props) {
 
   return (
@@ -34,9 +30,9 @@ function CardProduct(props) {
                   <LabelSizeAndCount lab = "Количество:" />
                 </div>
               <div className = "firstcolumn-secondrow">
-                <BtnPlusMinus sign = "-"/>
+                <Btn className = "btn-plus-minus-class" nameOfButton = "-"/>
                 <BtnIncrease count = "0" />
-                <BtnPlusMinus sign = "+"/>
+                <Btn className = "btn-plus-minus-class" nameOfButton = "+"/>
               </div>
               </div>
               
@@ -46,23 +42,23 @@ function CardProduct(props) {
                   <LabelSizeAndCount lab = "Размер:" />
                 </div>
                 <div className = "secondcolumn-secondrow">
-                  <BtnSize size = "36"/>
-                  <BtnSize size = "37"/>
-                  <BtnSize size = "38"/>
-                  <BtnSize size = "39"/>
-                  <BtnSize size = "40"/>
-                  <BtnSize size = "41"/>
-                  <BtnSize size = "42"/>
-                  <BtnSize size = "43"/>
-                  <BtnSize size = "44"/>
-                  <BtnSize size = "45"/>
+                  <Btn className = "size-class" nameOfButton = "36"/>
+                  <Btn className = "size-class" nameOfButton = "37"/>
+                  <Btn className = "size-class" nameOfButton = "38"/>
+                  <Btn className = "size-class" nameOfButton = "39"/>
+                  <Btn className = "size-class" nameOfButton = "40"/>
+                  <Btn className = "size-class" nameOfButton = "41"/>
+                  <Btn className = "size-class" nameOfButton = "42"/>
+                  <Btn className = "size-class" nameOfButton = "43"/>
+                  <Btn className = "size-class" nameOfButton = "44"/>
+                  <Btn className = "size-class" nameOfButton = "45"/>
                 </div>
               </div>
             </div>
 
             <div className = "button-position">
-              <BtnAddToChosen />
-              <BtnCheckout />
+              <Btn className = "btn-addtochosen-class" nameOfButton = "Добавить в избранное"/>
+              <Btn className = "btn-checkout-class" nameOfButton = "Оформить заказ"/>
             </div>
           
 

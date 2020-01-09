@@ -2,9 +2,9 @@ import React, {useState} from 'react';
 import './menu.css';
 import Price from './../price/price'
 
-function Menu(props){
-
-    let menus = [
+class Menu extends React.Component{
+    render(){
+        let menus = [
             {
                 name: "Бренд",
                 nameSubmenu: [
@@ -221,6 +221,9 @@ function Menu(props){
             <Price />
             </div>
         );
+    }
+
+    
   }
 
 export default Menu;
