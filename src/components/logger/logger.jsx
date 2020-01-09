@@ -22,11 +22,10 @@ class Logger extends React.Component {
   }
 
   async signOut() {
-    localStorage.removeItem("firstName");
-    localStorage.removeItem("lastName");
+    localStorage.clear();
     this.setState({ firstName: null });
     this.setState({ lastName: null });
-    var url = "http://sneakers-shop-back.herokuapp.com/auth/logout/";
+    var url = "https://sneakers-shop-back.herokuapp.com/auth/logout/";
     await fetch(url);
   }
 
@@ -40,6 +39,7 @@ class Logger extends React.Component {
             title="Войти"
             classHeightContainer="shortContainer"
             nameIcon="fas fa-sign-in-alt"
+            sizeIcon={2}
           />
         </Tooltip>
         <Tooltip position="bottom" content="Зарегистрироваться">
@@ -48,6 +48,7 @@ class Logger extends React.Component {
             title="Регистрация"
             classHeightContainer="longContainer"
             nameIcon="fas fa-user-plus"
+            sizeIcon={2}
           />
         </Tooltip>
       </>

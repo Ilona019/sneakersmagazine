@@ -18,16 +18,12 @@
 }
 
 .btn-back-in-catalog {
-  color: #003b99;
+  position: relative;
+  color: #ffffff;
   text-decoration: none;
-  border: 2px solid #0566ff;
+  border: 2px solid #ffffff;
   text-align: center;
   padding: 20px 0;
-}
-
-.btn-back-in-catalog:hover {
-  color: #ffffff;
-  background-color: rgb(5, 102, 255, 0.3);
 }
 
 .align-center-btn {

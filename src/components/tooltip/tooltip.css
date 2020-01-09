@@ -17,8 +17,6 @@
   overflow: hidden;
   font-size: 12px;
   box-sizing: border-box;
-  /* box-shadow: 1px 1px 15px #0566ff; */
-  z-index: 9999;
 }
 
 .tooltip.top {

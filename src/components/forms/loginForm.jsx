@@ -2,10 +2,11 @@ import React from "react";
 import Button from "../button/button";
 import Input from "../input/input";
 import { ValidateControlLogin } from "./validateControlLogin";
+import { addProductsGuestCart } from "./checkLocalStorage";
 
 class LoginForm extends React.Component {
   constructor(props) {
-    super(props);
+    super(props); 
     this.loginHandler = this.loginHandler.bind(this);
     this.submitHandler = this.submitHandler.bind(this);
   }
@@ -62,6 +63,7 @@ class LoginForm extends React.Component {
           localStorage.setItem("firstName", jsonData.credentials.firstName);
           localStorage.setItem("lastName", jsonData.credentials.lastName);
           this.setState({ isFormValid: true });
+          addProductsGuestCart();
           window.location.reload();
           break;
         case 1:

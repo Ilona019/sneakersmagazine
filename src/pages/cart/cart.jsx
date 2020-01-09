@@ -2,118 +2,165 @@ import React from "react";
 import "./cart.css";
 import pic from "../../images/cross/adidas-yeezy-boost-350-v2-trfrm_01-1200x800-1200x800_0.jpg";
 import Button from "../../components/button/button";
-import Icon from "../../components/icon/icon";
-import PriceCount from "../../components/price-count/price-count";
 import EmptyCart from "./emptyCart";
+import RowCart from "./rowCart";
+import Tooltip from "../../components/tooltip/tooltip";
+import PopUpWindows from "../../components/modal/popUpWindows";
 
 class Cart extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       productsCart: [],
-      curIndex: 0,
-      error: ""
+      error: -2
     };
     this.getServerData();
+    this.clearCart = this.clearCart.bind(this);
   }
 
   async getServerData() {
     const responce = await fetch(
-      "http://sneakers-shop-back.herokuapp.com/cart/read/"
+      "https://sneakers-shop-back.herokuapp.com/cart/read/"
     );
     const jsonData = await responce.json();
-    this.setState({
-      productsCart: jsonData.results,
-      error: jsonData.error
-    });
+    var productsCart = [
+      {
+        _id: 0,
+        img: pic,
+        name: "Название",
+        size: 37,
+        cost: 20000,
+        count: 2,
+        sum: 40000
+      },
+      {
+        _id: 1,
+        img: pic,
+        name: "Название",
+        size: 38,
+        cost: 20000,
+        count: 1,
+        sum: 20000
+      },
+      {
+        _id: 2,
+        img: pic,
+        name: "Название",
+        size: 39,
+        cost: 26000,
+        count: 1,
+        sum: 26000
+      }
+    ];
+    if (jsonData.error > 0) {
+      this.setState({
+        productsCart: jsonData.results,
+        //productsCart: productsCart,
+        error: jsonData.error
+      });
+    } else if (jsonData.error === 0) {
+      this.setState({
+        error: jsonData.error
+      });
+    } else {
+      alert(jsonData.messages);
+    }
+  }
+
+  getTableHeader = () => {
+    let headers = [];
+    let rowHeader = [
+      "Товар",
+      "Название",
+      "Размер",
+      "Цена",
+      "Количество",
+      "Сумма",
+      <>
+        <Tooltip position="right" content="Очистить">
+          <PopUpWindows
+            content={
+              <>
+                "Вы точно хотите удалить все товары? Отменить действие будет
+                невозможно"
+                <div className="btn-clear">
+                  <Button onClick={this.clearCart}>Очистить корзину</Button>
+                </div>
+              </>
+            }
+            title="Удаление всех товаров"
+            nameIcon="far fa-trash-alt"
+            sizeIcon={1}
+          />
+        </Tooltip>
+      </>
+    ];
+    for (let header of rowHeader) {
+      headers.push(<th>{header}</th>);
+    }
+    return headers;
+  };
+
+  deleteProduct = (element, e) => {
+    const productsCart = Object.assign([], this.state.productsCart);
+    productsCart.splice(productsCart.indexOf(element), 1);
+    this.setState({ productsCart: productsCart });
+
+    // fetch("http://sneakers-shop-back.herokuapp.com/cart/delete_one/", {
+    //   method: "POST",
+    //   body: JSON.stringify(element._id),
+    //   headers: {
+    //     "Content-Type": "application/json"
+    //   }
+    // });
+  };
+
+  async clearCart() {
+    const productsCart = Object.assign([], this.state.productsCart);
+    let lengthMassivaProductCart = this.state.productsCart.length;
+    productsCart.splice(0, lengthMassivaProductCart);
+    this.setState({ productsCart: productsCart });
+
+    // let response = await fetch('http://sneakers-shop-back.herokuapp.com/cart/delete_all/');
+    // let jsonData = await response.json();
+    // switch (jsonData.error) {
+    //   case 0:
+    //     this.setState({
+    //       productsCart: jsonData.results,
+    //       error: jsonData.error
+    //     });
+    //     break;
+    //   default:
+    //     alert(jsonData.messages);
+    //     this.setState({
+    //       error: jsonData.error
+    //     });
+    //   }
   }
 
   render() {
     let cart;
     let renderMessageEmpty = <EmptyCart />;
     let renderCart = (
-      <section className="basket">
-        <div className="container-basket">
-          <main className="basket-main">
-            <table className="basket-table">
+      <section className="cart">
+        <div className="container-cart">
+          <main className="cart-main">
+            <table className="cart-table">
               <thead>
-                <tr>
-                  <th>Товар</th>
-                  <th>Название</th>
-                  <th>Размер</th>
-                  <th>Цена</th>
-                  <th>Количество</th>
-                  <th>Сумма</th>
-                  <th></th>
-                </tr>
+                <tr>{this.getTableHeader()}</tr>
               </thead>
               <tbody>
-                <tr>
-                  <td className="basket-table__product">
-                    <img
-                      className="basket-table__link product"
-                      src={pic}
-                      atl="Продукт"
-                    ></img>
-                  </td>
-                  <td>
-                    <a className="basket-table__link" href="/cart">
-                      Название кроссовок
-                    </a>
-                  </td>
-                  <td>
-                    <span>37</span>
-                  </td>
-                  <td className="basket-table__price">
-                    <span>20000 &#8381;</span>
-                  </td>
-                  <td className="basket-price__count">
-                    <PriceCount currentCount={2} />
-                  </td>
-                  <td className="basket-table__total">
-                    <span>40000 &#8381;</span>
-                  </td>
-                  <td className="basket-table__remove">
-                    <span>
-                      {" "}
-                      <Icon name="times" size={1.1} />
-                    </span>
-                  </td>
-                </tr>
-                <tr>
-                  <td className="basket-table__product">
-                    <img
-                      className="basket-table__link product"
-                      src={pic}
-                      atl="Продукт"
-                    ></img>
-                  </td>
-                  <td>
-                    <div>
-                      <a className="basket-table__link" href="/cart">
-                        Название кроссовок
-                      </a>
-                    </div>
-                  </td>
-                  <td>
-                    <span>38</span>
-                  </td>
-                  <td className="basket-table__price">
-                    <span>20000 &#8381;</span>
-                  </td>
-                  <td className="basket-price__count">
-                    <PriceCount currentCount={1} />
-                  </td>
-                  <td className="basket-table__total">
-                    <span>20000 &#8381;</span>
-                  </td>
-                  <td className="basket-table__remove">
-                    <span>
-                      {" "}
-                      <Icon name="times" size={1.1} />
-                    </span>
-                  </td>
-                </tr>
+                {this.state.productsCart.map(element => (
+                  <RowCart
+                    pic={element.img}
+                    name={element.name}
+                    size={element.size}
+                    cost={element.cost}
+                    count={element.count}
+                    sum={element.sum}
+                    delEvent={this.deleteProduct.bind(this, element)}
+                  />
+                ))}
               </tbody>
             </table>
           </main>
@@ -122,22 +169,19 @@ class Cart extends React.Component {
           <div className="btn-orders">
             <Button className="invert">Перейти к оформлению</Button>
           </div>
-          <div className="btn-orders">
-            <Button>Очистить корзину</Button>
-          </div>
           <div className="total">
             <h3 className="label-total">Общая стоимость</h3>
-            <span>60000 &#8381;</span>
+            <span>86000 &#8381;</span>
           </div>
           <div className="total">
             <h3 className="label-total">Количество товаров</h3>
-            <span>3</span>
+            <span>4</span>
           </div>
         </div>
       </section>
     );
 
-    if (this.state.error === -3) cart = renderMessageEmpty;
+    if (this.state.productsCart.length === 0) cart = renderMessageEmpty;
     else cart = renderCart;
     return <>{cart}</>;
   }

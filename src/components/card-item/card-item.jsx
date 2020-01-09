@@ -9,6 +9,7 @@ class CardItem extends React.Component {
   render(){
     return (
       <div className = "card-item-class">
+        {/* addCart={props.addCart} id={props.id}  ВСТАВЬ ПРАВИЛЬНО - Я НЕ РАЗБИРАЛАСЬ ВЫДАВАЛО ОШИБКУ*/}
         <ImgBlueHeart />
         <Link to="/cardlist" style = {{textDecoration: "none", color: "#222"}} >
           <Crossimage way = {this.props.image} />

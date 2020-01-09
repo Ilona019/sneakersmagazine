@@ -22,7 +22,7 @@ class PopUpWindows extends Component {
   render() {
     return (      
       <Fragment>      
-      <Icon size={2} className={this.props.nameIcon} onClick={this.openModal} />
+      <Icon size={this.props.sizeIcon} className={this.props.nameIcon} onClick={this.openModal} />
         <Modal
           title={this.props.title}
           isOpen={this.state.isOpen}
