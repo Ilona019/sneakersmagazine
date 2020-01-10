@@ -115,7 +115,7 @@ class Cart extends React.Component {
     // productsCart.splice(productsCart.indexOf(element), 1);
     // this.setState({ productsCart: productsCart });
 
-    fetch("http://sneakers-shop-back.herokuapp.com/cart/delete_one/", {
+    fetch("https://sneakers-shop-back.herokuapp.com/cart/delete_one/", {
       method: "POST",
       credentials: "include",
       body: JSON.stringify({_id: element.id}),
@@ -132,7 +132,7 @@ class Cart extends React.Component {
     // this.setState({ productsCart: productsCart });
 
     let response = await fetch(
-      "http://sneakers-shop-back.herokuapp.com/cart/delete_all/",
+      "https://sneakers-shop-back.herokuapp.com/cart/delete_all/",
       { credentials: "include" }
     );
     let jsonData = await response.json();
