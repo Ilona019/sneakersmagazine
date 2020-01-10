@@ -6,11 +6,18 @@ class DropDownList extends React.Component {
     currentItem: this.props.defaultValue,
   };
 
+  componentDidUpdate(prevProps) {
+    //id товара, у которого меняется размер.
+    console.log(this.state.currentItem+" "+this.props.id);
+    //замедлить fetch
+  }
+
+
   getListItems() {
     let listItems = [];
     let list = this.props.list;
     for (let item of list) {
-        listItems.push(<option value={item}>{item}</option>);
+        listItems.push(<option key={item} value={item}>{item}</option>);
       }
       return listItems;
   }
@@ -21,7 +28,7 @@ class DropDownList extends React.Component {
         <label>
           <select
             value={this.state.currentItem}
-            onChange={e => this.setState({ currentItem: e.target.value })}
+            onChange={e => this.setState({ currentItem: e.target.value})}
           >
             {this.getListItems()}
           </select>

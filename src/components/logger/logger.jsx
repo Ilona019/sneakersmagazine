@@ -26,7 +26,8 @@ class Logger extends React.Component {
     this.setState({ firstName: null });
     this.setState({ lastName: null });
     var url = "https://sneakers-shop-back.herokuapp.com/auth/logout/";
-    await fetch(url);
+    await fetch(url, { credentials: "include" });
+    window.location.reload();
   }
 
   render() {

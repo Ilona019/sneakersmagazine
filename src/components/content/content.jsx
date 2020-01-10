@@ -22,6 +22,7 @@ function Content(props) {
     var data = { _id: id };
     fetch("https://sneakers-shop-back.herokuapp.com/cart/add/", {
       method: "POST",
+      credentials: 'include',
       body: JSON.stringify(data),
       headers: {
         "Content-Type": "application/json"

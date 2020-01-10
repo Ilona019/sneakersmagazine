@@ -14,6 +14,7 @@ export function addProductsGuestCart() {
     JSON.parse(localStorage.getItem("cartGuest")).map(id =>
       fetch("https://sneakers-shop-back.herokuapp.com/cart/add/", {
         method: "POST",
+        credentials: 'include',
         body: JSON.stringify({ _id: id }),
         headers: {
           "Content-Type": "application/json"

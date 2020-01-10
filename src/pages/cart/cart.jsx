@@ -12,7 +12,9 @@ class Cart extends React.Component {
     super(props);
     this.state = {
       productsCart: [],
-      error: -2
+      total_count: 0,
+      total_sum: 0,
+      error: 1
     };
     this.getServerData();
     this.clearCart = this.clearCart.bind(this);
@@ -20,48 +22,55 @@ class Cart extends React.Component {
 
   async getServerData() {
     const responce = await fetch(
-      "https://sneakers-shop-back.herokuapp.com/cart/read/"
+      "https://sneakers-shop-back.herokuapp.com/cart/read/",
+      { credentials: "include" }
     );
     const jsonData = await responce.json();
     var productsCart = [
       {
-        _id: 0,
+        id: 0,
         img: pic,
         name: "Название",
         size: 37,
         cost: 20000,
-        count: 2,
-        sum: 40000
+        total_count: 2,
+        total_sum: 40000
       },
       {
-        _id: 1,
+        id: 1,
         img: pic,
         name: "Название",
         size: 38,
         cost: 20000,
-        count: 1,
-        sum: 20000
+        total_count: 1,
+        total_sum: 20000
       },
       {
-        _id: 2,
+        id: 2,
         img: pic,
         name: "Название",
         size: 39,
         cost: 26000,
-        count: 1,
-        sum: 26000
+        total_count: 1,
+        total_sum: 26000
       }
     ];
-    if (jsonData.error > 0) {
-      this.setState({
-        productsCart: jsonData.results,
-        //productsCart: productsCart,
-        error: jsonData.error
-      });
-    } else if (jsonData.error === 0) {
-      this.setState({
-        error: jsonData.error
-      });
+    if (jsonData.error === 0) {
+      if (jsonData.cart === null) {
+        this.setState({
+          productsCart: [],
+          //productsCart: productsCart,
+          error: jsonData.error
+        });
+      } else {
+        this.setState({
+          productsCart: jsonData.cart,
+          total_count: jsonData.total_count,
+          total_sum: jsonData.total_sum,
+          //productsCart: productsCart,
+          error: jsonData.error
+        });
+      }
     } else {
       alert(jsonData.messages);
     }
@@ -96,93 +105,99 @@ class Cart extends React.Component {
       </>
     ];
     for (let header of rowHeader) {
-      headers.push(<th>{header}</th>);
+      headers.push(<th key={header}>{header}</th>);
     }
     return headers;
   };
 
   deleteProduct = (element, e) => {
-    const productsCart = Object.assign([], this.state.productsCart);
-    productsCart.splice(productsCart.indexOf(element), 1);
-    this.setState({ productsCart: productsCart });
+    // const productsCart = Object.assign([], this.state.productsCart);
+    // productsCart.splice(productsCart.indexOf(element), 1);
+    // this.setState({ productsCart: productsCart });
 
-    // fetch("http://sneakers-shop-back.herokuapp.com/cart/delete_one/", {
-    //   method: "POST",
-    //   body: JSON.stringify(element._id),
-    //   headers: {
-    //     "Content-Type": "application/json"
-    //   }
-    // });
+    fetch("http://sneakers-shop-back.herokuapp.com/cart/delete_one/", {
+      method: "POST",
+      credentials: "include",
+      body: JSON.stringify({_id: element.id}),
+      headers: {
+        "Content-Type": "application/json"
+      }
+    });
   };
 
   async clearCart() {
-    const productsCart = Object.assign([], this.state.productsCart);
-    let lengthMassivaProductCart = this.state.productsCart.length;
-    productsCart.splice(0, lengthMassivaProductCart);
-    this.setState({ productsCart: productsCart });
+    // const productsCart = Object.assign([], this.state.productsCart);
+    // let lengthMassivaProductCart = this.state.productsCart.length;
+    // productsCart.splice(0, lengthMassivaProductCart);
+    // this.setState({ productsCart: productsCart });
 
-    // let response = await fetch('http://sneakers-shop-back.herokuapp.com/cart/delete_all/');
-    // let jsonData = await response.json();
-    // switch (jsonData.error) {
-    //   case 0:
-    //     this.setState({
-    //       productsCart: jsonData.results,
-    //       error: jsonData.error
-    //     });
-    //     break;
-    //   default:
-    //     alert(jsonData.messages);
-    //     this.setState({
-    //       error: jsonData.error
-    //     });
-    //   }
+    let response = await fetch(
+      "http://sneakers-shop-back.herokuapp.com/cart/delete_all/",
+      { credentials: "include" }
+    );
+    let jsonData = await response.json();
+    switch (jsonData.error) {
+      case 0:
+        this.setState({
+          productsCart: [],
+          error: jsonData.error
+        });
+        break;
+      default:
+        alert(jsonData.messages);
+        this.setState({
+          error: jsonData.error
+        });
+    }
   }
 
   render() {
     let cart;
     let renderMessageEmpty = <EmptyCart />;
-    let renderCart = (
-      <section className="cart">
-        <div className="container-cart">
-          <main className="cart-main">
-            <table className="cart-table">
-              <thead>
-                <tr>{this.getTableHeader()}</tr>
-              </thead>
-              <tbody>
-                {this.state.productsCart.map(element => (
-                  <RowCart
-                    pic={element.img}
-                    name={element.name}
-                    size={element.size}
-                    cost={element.cost}
-                    count={element.count}
-                    sum={element.sum}
-                    delEvent={this.deleteProduct.bind(this, element)}
-                  />
-                ))}
-              </tbody>
-            </table>
-          </main>
-        </div>
-        <div className="orders-transition-block">
-          <div className="btn-orders">
-            <Button className="invert">Перейти к оформлению</Button>
-          </div>
-          <div className="total">
-            <h3 className="label-total">Общая стоимость</h3>
-            <span>86000 &#8381;</span>
-          </div>
-          <div className="total">
-            <h3 className="label-total">Количество товаров</h3>
-            <span>4</span>
-          </div>
-        </div>
-      </section>
-    );
 
     if (this.state.productsCart.length === 0) cart = renderMessageEmpty;
-    else cart = renderCart;
+    else
+      cart = (
+        <section className="cart">
+          <div className="container-cart">
+            <main className="cart-main">
+              <table className="cart-table">
+                <thead>
+                  <tr>{this.getTableHeader()}</tr>
+                </thead>
+                <tbody>
+                  {this.state.productsCart.map(element => (
+                    <RowCart
+                      key={element.id}
+                      idProduct={element.id}
+                      pic={element.img}
+                      name={element.name}
+                      size={element.size}
+                      cost={element.cost}
+                      count={element.count}
+                      sum={element.sum}
+                      delEvent={this.deleteProduct.bind(this, element)}
+                    />
+                  ))}
+                </tbody>
+              </table>
+            </main>
+          </div>
+          <div className="orders-transition-block">
+            <div className="btn-orders">
+              <Button className="invert">Перейти к оформлению</Button>
+            </div>
+            <div className="total">
+              <h3 className="label-total">Общая стоимость</h3>
+              <span>{this.state.total_sum} &#8381;</span>
+            </div>
+            <div className="total">
+              <h3 className="label-total">Количество товаров</h3>
+              <span>{this.state.total_count}</span>
+            </div>
+          </div>
+        </section>
+      );
     return <>{cart}</>;
   }
 }

@@ -50,6 +50,7 @@ class LoginForm extends React.Component {
     try {
       const response = await fetch(url, {
         method: "POST",
+        credentials: 'include',
         body: JSON.stringify(data),
         headers: {
           "Content-Type": "application/json"
