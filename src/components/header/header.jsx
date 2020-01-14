@@ -15,7 +15,7 @@ class Header extends React.Component {
     return (
       <div className = "header-class" >
         <Logo />
-        <Search />
+        <Search dataSearch = {this.props.dataSearch}/>
         <div className = "image-heart">
           <ImgHeart way = {heart}/>
           <ButtonCount />

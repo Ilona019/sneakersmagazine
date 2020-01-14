@@ -17,31 +17,6 @@ class Content extends React.Component {
   //   });
 
   render() {
-    // let price = this.props.data;
-    // let dataPrice = this.props.dataPrice;
-    //     if(this.props.data){
-    //       return (
-    //         <div className = "content-class" >
-    //           {this.props.data.map((item) => {
-    //           return(
-    //              <CardItem image = {item.img} cost = {item.cost} name = {item.name} description = {item.text}/>
-    //           );
-    //         })}
-    //         </div>
-    //       )
-    //     }
-    //      if(this.props.dataPrice){
-    //       return (
-    //         <div className = "content-class" >
-    //           {this.props.dataPrice.map((item) => {
-    //           return(
-    //              <CardItem image = {item.img} cost = {item.cost} name = {item.name} description = {item.text}/>
-    //           );
-    //         })}
-    //         </div>
-    //       )}
-    //   }
-    // }
     return (
       <div className="content-class">
         {this.props.dataPrice.map(item => {
@@ -76,10 +51,22 @@ class Content extends React.Component {
             />
           );
         })}
+
+        {this.props.dataSearch.map(item => {
+          return (
+            <CardItem
+              image={item.img}
+              cost={item.cost}
+              name={item.name}
+              description={item.text}
+            />
+          );
+        })}
       </div>
     );
   }
 }
+
 // if (!userIsRegistered()) {
 //   if (cartGuestIsEmpty()) {
 //     var cartGuest = [];

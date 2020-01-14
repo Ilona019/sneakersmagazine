@@ -15,7 +15,7 @@ class Price extends React.Component {
       if (e.keyCode === 13) {
         // postServerDataPrice(inputFrom.value);
         this.props.make(inputFrom.value)
-        // console.log(this.props.make);
+        // console.log(this);
       }
     })
   }
