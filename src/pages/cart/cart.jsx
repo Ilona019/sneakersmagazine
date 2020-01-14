@@ -1,6 +1,5 @@
 import React from "react";
 import "./cart.css";
-import pic from "../../images/cross/adidas-yeezy-boost-350-v2-trfrm_01-1200x800-1200x800_0.jpg";
 import Button from "../../components/button/button";
 import EmptyCart from "./emptyCart";
 import RowCart from "./rowCart";
@@ -18,62 +17,49 @@ class Cart extends React.Component {
     };
     this.getServerData();
     this.clearCart = this.clearCart.bind(this);
+    this.getServerData = this.getServerData.bind(this);
   }
 
-  async getServerData() {
-    const responce = await fetch(
-      "https://sneakers-shop-back.herokuapp.com/cart/read/",
-      { credentials: "include" }
-    );
-    const jsonData = await responce.json();
-    var productsCart = [
-      {
-        id: 0,
-        img: pic,
-        name: "Название",
-        size: 37,
-        cost: 20000,
-        total_count: 2,
-        total_sum: 40000
-      },
-      {
-        id: 1,
-        img: pic,
-        name: "Название",
-        size: 38,
-        cost: 20000,
-        total_count: 1,
-        total_sum: 20000
-      },
-      {
-        id: 2,
-        img: pic,
-        name: "Название",
-        size: 39,
-        cost: 26000,
-        total_count: 1,
-        total_sum: 26000
+  async updateCart(id, counter) {
+    //fetch count change products
+    await fetch("https://sneakers-shop-back.herokuapp.com/cart/update/", {
+      method: "POST",
+      credentials: "include",
+      body: JSON.stringify({ _id: id, count: counter }),
+      headers: {
+        "Content-Type": "application/json"
       }
-    ];
-    if (jsonData.error === 0) {
-      if (jsonData.cart === null) {
-        this.setState({
-          productsCart: [],
-          //productsCart: productsCart,
-          error: jsonData.error
-        });
-      } else {
-        this.setState({
-          productsCart: jsonData.cart,
-          total_count: jsonData.total_count,
-          total_sum: jsonData.total_sum,
-          //productsCart: productsCart,
-          error: jsonData.error
-        });
-      }
-    } else {
-      alert(jsonData.messages);
-    }
+    });
+    //update display cart
+    this.getServerData();
+  }
+
+  getServerData() {
+    fetch("https://sneakers-shop-back.herokuapp.com/cart/read/", {
+      credentials: "include"
+    })
+      .then(response => {
+        return response.json();
+      })
+      .then(jsonData => {
+        if (jsonData.error === 0) {
+          if (jsonData.cart === null) {
+            this.setState({
+              productsCart: [],
+              error: jsonData.error
+            });
+          } else {
+            this.setState({
+              productsCart: jsonData.cart,
+              total_count: jsonData.total_count,
+              total_sum: jsonData.total_sum,
+              error: jsonData.error
+            });
+          }
+        } else {
+          alert(jsonData.messages);
+        }
+      });
   }
 
   getTableHeader = () => {
@@ -110,27 +96,19 @@ class Cart extends React.Component {
     return headers;
   };
 
-  deleteProduct = (element, e) => {
-    // const productsCart = Object.assign([], this.state.productsCart);
-    // productsCart.splice(productsCart.indexOf(element), 1);
-    // this.setState({ productsCart: productsCart });
-
-    fetch("https://sneakers-shop-back.herokuapp.com/cart/delete_one/", {
+  async deleteProduct(element, e) {
+    await fetch("https://sneakers-shop-back.herokuapp.com/cart/delete_one/", {
       method: "POST",
       credentials: "include",
-      body: JSON.stringify({_id: element.id}),
+      body: JSON.stringify({ _id: element.id }),
       headers: {
         "Content-Type": "application/json"
       }
     });
-  };
+    this.getServerData();
+  }
 
   async clearCart() {
-    // const productsCart = Object.assign([], this.state.productsCart);
-    // let lengthMassivaProductCart = this.state.productsCart.length;
-    // productsCart.splice(0, lengthMassivaProductCart);
-    // this.setState({ productsCart: productsCart });
-
     let response = await fetch(
       "https://sneakers-shop-back.herokuapp.com/cart/delete_all/",
       { credentials: "include" }
@@ -177,6 +155,7 @@ class Cart extends React.Component {
                       count={element.count}
                       sum={element.sum}
                       delEvent={this.deleteProduct.bind(this, element)}
+                      updateCart={this.updateCart.bind(this)}
                     />
                   ))}
                 </tbody>

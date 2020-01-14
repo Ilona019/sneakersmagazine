@@ -4,6 +4,7 @@ import PriceCount from "../../components/price-count/price-count";
 import DropDownList from "../../components/dropDownList/dropDownList";
 
 class RowBasket extends React.Component {
+  updateCart=this.props.updateCart
   render() {
     return (
       <tr>
@@ -26,7 +27,7 @@ class RowBasket extends React.Component {
           <span>{this.props.cost} &#8381;</span>
         </td>
         <td className="cart-price__count">
-          <PriceCount currentCount={this.props.count} id={this.props.idProduct}/>
+          <PriceCount currentCount={this.props.count} id={this.props.idProduct} updateCart={this.props.updateCart}/>
         </td>
         <td className="cart-table__total">
           <span>{this.props.sum} &#8381;</span>

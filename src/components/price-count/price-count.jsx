@@ -9,32 +9,21 @@ class PriceCount extends React.Component {
   }
 
   changeScore(status) {
-    if (status === "Minus" && this.state.counter === 1) return null;
-
-    this.setState((state)=> {
+    if (status === "Minus" && this.state.counter === 1) return 1;
+    this.setState((state)=>{
       return {counter: state.counter + (status === "Plus" ? 1 : -1)}
     });
+
+    return this.state.counter + (status === "Plus" ? 1 : -1);
   }
 
-  componentDidUpdate(prevProps) {
-    this.updateDataCart();
-    //id товара, у которого меняется количество.
-    //console.log(this.props.id);
-    //замедлить fetch
-  }
-
-  updateDataCart = () => {
-    //console.log(this.state.counter);
-    //fetch count change products
-  };
-
-  render() {
+render() {
     return (
       <>
         <div className="cart-count">
           <div
             className="cart-count__minus"
-            onClick={() => this.changeScore("Minus")}
+            onClick={() => this.props.updateCart(this.props.id, this.changeScore("Minus"))}
           >
             <span>-</span>
           </div>
@@ -48,7 +37,7 @@ class PriceCount extends React.Component {
           </div>
           <div
             className="cart-count__plus"
-            onClick={() => this.changeScore("Plus")}
+            onClick={() => this.props.updateCart(this.props.id,this.changeScore("Plus"))}
           >
             <span>+</span>
           </div>
