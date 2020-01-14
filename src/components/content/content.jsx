@@ -22,12 +22,17 @@ class Content extends React.Component {
       <div className="content-class">
         {this.props.dataPrice.map(item => {
           return (
-            <CardItem
-              image={item.img}
-              cost={item.cost}
-              name={item.name}
-              description={item.text}
-            />
+            <Link
+              to="/item"
+              style={{ textDecoration: "none", color: "#222" }}
+            >
+              <CardItem
+                image={item.img}
+                cost={item.cost}
+                name={item.name}
+                description={item.text}
+              />
+            </Link>
           );
         })}
 
@@ -49,23 +54,33 @@ class Content extends React.Component {
 
         {this.props.dataMenu.map(item => {
           return (
-            <CardItem
-              image={item.img}
-              cost={item.cost}
-              name={item.name}
-              description={item.text}
-            />
+            <Link
+              to="/item"
+              style={{ textDecoration: "none", color: "#222" }}
+            >
+              <CardItem
+                image={item.img}
+                cost={item.cost}
+                name={item.name}
+                description={item.text}
+              />
+            </Link>
           );
         })}
 
         {this.props.dataSearch.map(item => {
           return (
-            <CardItem
-              image={item.img}
-              cost={item.cost}
-              name={item.name}
-              description={item.text}
-            />
+            <Link
+              to="/item"
+              style={{ textDecoration: "none", color: "#222" }}
+            >
+              <CardItem
+                image={item.img}
+                cost={item.cost}
+                name={item.name}
+                description={item.text}
+              />
+            </Link>  
           );
         })}
       </div>

@@ -68,7 +68,7 @@ class App extends React.Component {
             <Route
               path="/item"
               render={() => (
-                <CardProduct data={this.state.data} />
+                <CardProduct />
               )}
             />
             <Route
