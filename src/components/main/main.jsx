@@ -8,71 +8,14 @@ import { Route, Switch } from "react-router-dom";
 import Cart from "./../../pages/cart/cart";
 
 class Main extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      data: [],
-      dataPrice: [],
-      dataMenu: [],
-      dataSearch: []
-    };
-    this.getServerData();
-    this.postServerDataPrice = this.postServerDataPrice.bind(this); //приязка к контексту...
-    this.postServerMenuItems = this.postServerMenuItems.bind(this);
-    this.postServerDataSearch = this.postServerDataSearch.bind(this);
-  }
-
-  getServerData() {
-    const url = "https://sneakers-shop-back.herokuapp.com/main/catalog";
-    fetch(
-      url
-      //   , {
-      //   credentials: 'same-origin'
-      // }
-    )
-      .then(response => response.json())
-      .then(response => this.setState({ data: response }));
-  }
-
-  postServerDataPrice(paramChosenPrice) {
-    const url =
-      "https://sneakers-shop-back.herokuapp.com/main/catalog/?cost=" +
-      paramChosenPrice;
-    fetch(url, {
-      method: "POST"
-    })
-      .then(response => response.json())
-      .then(response => this.setState({ dataPrice: response }));
-  }
-
-  postServerMenuItems(v) {
-    const url = "https://sneakers-shop-back.herokuapp.com/main/catalog/?" + v;
-    fetch(url, {
-      method: "POST"
-    })
-      .then(response => response.json())
-      .then(response => this.setState({ dataMenu: response }));
-  }
-
-  //пока метод в БД не работает
-  postServerDataSearch(v){
-    const url = 'https://sneakers-shop-back.herokuapp.com/main/catalog/search/?query=' + v;
-    fetch(url, {
-      method: 'POST'
-    })
-    .then(response => response.json())
-    // .then(response => console.log(response))
-    .then(response => this.setState({dataSearch: response}))
-    // console.log(url);
-  }
 
   render() {
     return (
       <div className="container">
-        <Header dataSearch = {this.postServerDataSearch}/>
+        <Header dataSearch = {this.props.search}/>
         <Menu
-          dataMenu={this.postServerMenuItems}
-          try={this.postServerDataPrice}
+          dataMenu={this.props.menu}
+          try={this.props.price}
         />
         <div className="content-class">
           <Switch>
@@ -82,10 +25,10 @@ class Main extends React.Component {
               path="/"
               render={() => (
                 <Content
-                  dataMenu={this.state.dataMenu}
-                  dataPrice={this.state.dataPrice}
-                  data={this.state.data}
-                  dataSearch = {this.state.dataSearch}
+                  dataMenu={this.props.dataMenu}
+                  dataPrice={this.props.dataPrice}
+                  data = {this.props.data}
+                  dataSearch = {this.props.dataSearch}
                 />
               )}
             />
