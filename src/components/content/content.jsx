@@ -7,6 +7,19 @@ import { element } from "prop-types";
 import { userIsRegistered, cartGuestIsEmpty } from "../forms/checkLocalStorage";
 
 class Content extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      data: this.props.data
+    };
+  }
+
+  // помогло динамической отрисовке контента
+  static getDerivedStateFromProps(nextProps, prevState) {
+    return {
+      data: nextProps.data
+    };
+  }
   // const addCart = id => {
   //   var data = { _id: id };
   //   fetch("https://sneakers-shop-back.herokuapp.com/cart/add/", {
@@ -20,7 +33,7 @@ class Content extends React.Component {
   render() {
     return (
       <div className="content-class">
-        {this.props.dataPrice.map(item => {
+        {/* {this.props.dataPrice.map(item => {
           return (
             <Link
               to="/item"
@@ -34,9 +47,23 @@ class Content extends React.Component {
               />
             </Link>
           );
+        })} */}
+
+        {/* {console.log(this.props.data)} */}
+        {this.state.data.map(item => {
+          return (
+            <Link to="/item" style={{ textDecoration: "none", color: "#222" }}>
+              <CardItem
+                image={item.img}
+                cost={item.cost}
+                name={item.name}
+                description={item.text}
+              />
+            </Link>
+          );
         })}
 
-        {this.props.data.map(item => {
+        {/* {this.props.dataMenu.map(item => {
           return (
             <Link
               to="/item"
@@ -50,25 +77,9 @@ class Content extends React.Component {
               />
             </Link>
           );
-        })}
+        })} */}
 
-        {this.props.dataMenu.map(item => {
-          return (
-            <Link
-              to="/item"
-              style={{ textDecoration: "none", color: "#222" }}
-            >
-              <CardItem
-                image={item.img}
-                cost={item.cost}
-                name={item.name}
-                description={item.text}
-              />
-            </Link>
-          );
-        })}
-
-        {this.props.dataSearch.map(item => {
+        {/* {this.props.dataSearch.map(item => {
           return (
             <Link
               to="/item"
@@ -82,7 +93,7 @@ class Content extends React.Component {
               />
             </Link>  
           );
-        })}
+        })} */}
       </div>
     );
   }

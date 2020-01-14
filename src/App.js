@@ -9,9 +9,9 @@ class App extends React.Component {
     super(props);
     this.state = {
       data: [],
-      dataPrice: [],
-      dataMenu: [],
-      dataSearch: []
+      // dataPrice: [],
+      // dataMenu: [],
+      // dataSearch: []
     };
     this.getServerData();
     this.postServerDataPrice = this.postServerDataPrice.bind(this); //приязка к контексту...
@@ -34,7 +34,7 @@ class App extends React.Component {
       method: "POST"
     })
       .then(response => response.json())
-      .then(response => this.setState({ dataPrice: response }));
+      .then(response => this.setState({ data: response }));
   }
 
   postServerMenuItems(v) {
@@ -43,7 +43,7 @@ class App extends React.Component {
       method: "POST"
     })
       .then(response => response.json())
-      .then(response => this.setState({ dataMenu: response }));
+      .then(response => this.setState({ data: response }));
   }
 
   //пока метод в БД не работает
@@ -56,7 +56,7 @@ class App extends React.Component {
     })
       .then(response => response.json())
       // .then(response => console.log(response))
-      .then(response => this.setState({ dataSearch: response }));
+      .then(response => this.setState({ data: response }));
     // console.log(url);
   }
 
@@ -80,10 +80,10 @@ class App extends React.Component {
                   menu={this.postServerMenuItems}
                   search={this.postServerDataSearch}
                   //все это идет в контент
-                  dataPrice={this.state.dataPrice}
-                  dataMenu={this.state.dataMenu}
+                  dataPrice={this.state.data}
+                  dataMenu={this.state.data}
                   data={this.state.data}
-                  dataSearch={this.state.dataSearch}
+                  dataSearch={this.state.data}
                 />
               )}
             />
