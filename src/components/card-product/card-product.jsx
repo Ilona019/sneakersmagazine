@@ -9,10 +9,9 @@ import Btn from './../Btn/Btn';
 import BtnIncrease from './../card-product/btn-increase/btn-increase';
 
 import i from './../../images/cross/adidas-yeezy-boost-350-v2-trfrm_01-1200x800-1200x800_0.jpg';
-// import i from './../../images/boot1.gif';
-function CardProduct(props) {
-
-  return (
+class CardProduct extends React.Component {
+  render(){
+    return (
       <div className = "container-card-project-class">
         <div className = "content">
           <PictureBigCard way = {i}/>
@@ -66,6 +65,7 @@ function CardProduct(props) {
         </div>
       </div>
   );
+  }
 }
 
 export default CardProduct;

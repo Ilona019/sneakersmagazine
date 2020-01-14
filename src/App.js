@@ -42,19 +42,21 @@ class App extends React.Component {
     fetch(url, {
       method: "POST"
     })
-    .then(response => response.json())
-    .then(response => this.setState({ dataMenu: response }));
+      .then(response => response.json())
+      .then(response => this.setState({ dataMenu: response }));
   }
 
   //пока метод в БД не работает
-  postServerDataSearch(v){
-    const url = 'https://sneakers-shop-back.herokuapp.com/main/catalog/search/?query=' + v;
+  postServerDataSearch(v) {
+    const url =
+      "https://sneakers-shop-back.herokuapp.com/main/catalog/search/?query=" +
+      v;
     fetch(url, {
-      method: 'POST'
+      method: "POST"
     })
-    .then(response => response.json())
-    // .then(response => console.log(response))
-    .then(response => this.setState({dataSearch: response}))
+      .then(response => response.json())
+      // .then(response => console.log(response))
+      .then(response => this.setState({ dataSearch: response }));
     // console.log(url);
   }
 
@@ -63,20 +65,25 @@ class App extends React.Component {
       <div className="app-wrapper">
         <BrowserRouter>
           <Switch>
-            <Route path="/cardlist" render={() => <CardProduct />} />
+            <Route
+              path="/item"
+              render={() => (
+                <CardProduct data={this.state.data} />
+              )}
+            />
             <Route
               path="/"
               render={() => (
                 <Main
-                // все это идет в header
+                  // все это идет в header
                   price={this.postServerDataPrice}
                   menu={this.postServerMenuItems}
-                  search = {this.postServerDataSearch}
+                  search={this.postServerDataSearch}
                   //все это идет в контент
                   dataPrice={this.state.dataPrice}
                   dataMenu={this.state.dataMenu}
                   data={this.state.data}
-                  dataSearch = {this.state.dataSearch}
+                  dataSearch={this.state.dataSearch}
                 />
               )}
             />

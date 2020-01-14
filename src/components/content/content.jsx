@@ -1,5 +1,6 @@
 import React from "react";
 import "./content.css";
+import { Link } from "react-router-dom";
 
 import CardItem from "./../card-item/card-item";
 import { element } from "prop-types";
@@ -32,12 +33,17 @@ class Content extends React.Component {
 
         {this.props.data.map(item => {
           return (
-            <CardItem
-              image={item.img}
-              cost={item.cost}
-              name={item.name}
-              description={item.text}
-            />
+            <Link
+              to="/item"
+              style={{ textDecoration: "none", color: "#222" }}
+            >
+              <CardItem
+                image={item.img}
+                cost={item.cost}
+                name={item.name}
+                description={item.text}
+              />
+            </Link>
           );
         })}
 
@@ -62,7 +68,6 @@ class Content extends React.Component {
             />
           );
         })}
-
       </div>
     );
   }

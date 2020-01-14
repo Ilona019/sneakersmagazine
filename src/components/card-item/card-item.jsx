@@ -3,7 +3,7 @@ import './card-item.css';
 import Crossimage from "../crossimage/crossimage";
 import Label from './../label/label';
 import ImgBlueHeart from '../imgBlueHeart/imgBlueHeart';
-import {Link} from 'react-router-dom';
+// import {Link} from 'react-router-dom';
 
 class CardItem extends React.Component {
   render(){
@@ -11,9 +11,9 @@ class CardItem extends React.Component {
       <div className = "card-item-class">
         {/* addCart={props.addCart} id={props.id}  ВСТАВЬ ПРАВИЛЬНО - Я НЕ РАЗБИРАЛАСЬ ВЫДАВАЛО ОШИБКУ*/}
         <ImgBlueHeart />
-        <Link to="/cardlist" style = {{textDecoration: "none", color: "#222"}} >
+        {/* <Link to="/cardlist" style = {{textDecoration: "none", color: "#222"}} > */}
           <Crossimage way = {this.props.image} />
-        </Link>
+        {/* </Link> */}
         <Label className = "labelName-class" nameOfLabel = {this.props.name}/>
         <Label className = "labelDescription-class" nameOfLabel = {this.props.description}/>
         <Label className = "labelPrice-class" nameOfLabel = {this.props.cost}/>
