@@ -8,7 +8,7 @@ import ImgHeart from './../imgHeart/imgHeart';
 import shoppingCart from './../../images/shopping-cart.svg';
 import ImgShoppingCart from './../imgShoppingCart/imgShoppingCart';
 import ButtonCount from './../button-count/button-count';
-import Label from './../label/label';
+import Logger from './../logger/logger';
 
 class Header extends React.Component {
   render(){
@@ -24,7 +24,7 @@ class Header extends React.Component {
         <ImgShoppingCart way = {shoppingCart} url  = "/cart"/>
         <ButtonCount />
        </div>
-      <Label className = "labelProfile-class" nameOfLabel = "Профиль"/>
+      <Logger/>
     </div>
   );
   }

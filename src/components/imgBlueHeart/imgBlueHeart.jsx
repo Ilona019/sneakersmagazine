@@ -19,7 +19,7 @@ class ImgBlueHeart extends React.Component {
     return (
       <svg
         className={this.state.isLike ? "img-blue-heart" : "img-white-heart"}
-        onClick={this.changeLike}
+        onClick={() => {this.changeLike(); this.props.addCart(this.props.id)}}
         version="1.1"
         xmlns="http://www.w3.org/2000/svg"
         xmlnsXlink="http://www.w3.org/1999/xlink"

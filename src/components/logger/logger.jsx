@@ -1,10 +1,11 @@
 import React from "react";
-import LabelProfile from "../labelProfile/labelProfile";
+import Label from "../label/label";
 import Icon from "../icon/icon";
 import PopUpWindows from "../modal/popUpWindows";
 import LoginForm from "../forms/loginForm";
 import RegistrationForm from "../forms/registrationForm";
 import Tooltip from "../tooltip/tooltip";
+import {userIsRegistered} from "../forms/checkLocalStorage";
 
 class Logger extends React.Component {
   constructor(props) {
@@ -13,12 +14,7 @@ class Logger extends React.Component {
       firstName: localStorage.getItem("firstName"),
       lastName: localStorage.getItem("lastName")
     };
-    this.isEmpty = this.isEmpty.bind(this);
     this.signOut = this.signOut.bind(this);
-  }
-
-  isEmpty(str) {
-    return typeof str === "undefined" || str === null || str === "";
   }
 
   async signOut() {
@@ -55,9 +51,13 @@ class Logger extends React.Component {
       </>
     );
     let contentUser;
-    if (!this.isEmpty(this.state.firstName)) {
+    if (userIsRegistered()) {
       contentUser = (
-        <LabelProfile label={this.state.firstName + " " + this.state.lastName}>
+        <Label
+          nameOfLabel={this.state.firstName + " " + this.state.lastName}
+          className="labelProfile-class"
+          content="profile"
+        >
           <Tooltip position="bottom" content="Выйти">
             <Icon
               size={2}
@@ -65,10 +65,18 @@ class Logger extends React.Component {
               onClick={this.signOut}
             />
           </Tooltip>
-        </LabelProfile>
+        </Label>
       );
     } else {
-      contentUser = <LabelProfile label="Профиль">{blockIcons}</LabelProfile>;
+      contentUser = (
+        <Label
+          nameOfLabel="Профиль"
+          className="labelProfile-class"
+          content="profile"
+        >
+          {blockIcons}
+        </Label>
+      );
     }
     return <div>{contentUser}</div>;
   }
