@@ -8,10 +8,7 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      data: [],
-      // dataPrice: [],
-      // dataMenu: [],
-      // dataSearch: []
+      data: []
     };
     this.getServerData();
     this.postServerDataPrice = this.postServerDataPrice.bind(this); //приязка к контексту...
@@ -80,10 +77,7 @@ class App extends React.Component {
                   menu={this.postServerMenuItems}
                   search={this.postServerDataSearch}
                   //все это идет в контент
-                  dataPrice={this.state.data}
-                  dataMenu={this.state.data}
                   data={this.state.data}
-                  dataSearch={this.state.data}
                 />
               )}
             />

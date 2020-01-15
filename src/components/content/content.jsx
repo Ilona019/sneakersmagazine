@@ -1,6 +1,5 @@
 import React from "react";
 import "./content.css";
-import { Link } from "react-router-dom";
 
 import CardItem from "./../card-item/card-item";
 import { element } from "prop-types";
@@ -33,67 +32,16 @@ class Content extends React.Component {
   render() {
     return (
       <div className="content-class">
-        {/* {this.props.dataPrice.map(item => {
-          return (
-            <Link
-              to="/item"
-              style={{ textDecoration: "none", color: "#222" }}
-            >
-              <CardItem
-                image={item.img}
-                cost={item.cost}
-                name={item.name}
-                description={item.text}
-              />
-            </Link>
-          );
-        })} */}
-
-        {/* {console.log(this.props.data)} */}
         {this.state.data.map(item => {
           return (
-            <Link to="/item" style={{ textDecoration: "none", color: "#222" }}>
               <CardItem
                 image={item.img}
                 cost={item.cost}
                 name={item.name}
                 description={item.text}
               />
-            </Link>
           );
         })}
-
-        {/* {this.props.dataMenu.map(item => {
-          return (
-            <Link
-              to="/item"
-              style={{ textDecoration: "none", color: "#222" }}
-            >
-              <CardItem
-                image={item.img}
-                cost={item.cost}
-                name={item.name}
-                description={item.text}
-              />
-            </Link>
-          );
-        })} */}
-
-        {/* {this.props.dataSearch.map(item => {
-          return (
-            <Link
-              to="/item"
-              style={{ textDecoration: "none", color: "#222" }}
-            >
-              <CardItem
-                image={item.img}
-                cost={item.cost}
-                name={item.name}
-                description={item.text}
-              />
-            </Link>  
-          );
-        })} */}
       </div>
     );
   }
