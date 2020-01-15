@@ -4,7 +4,6 @@ import PriceCount from "../../components/price-count/price-count";
 import DropDownList from "../../components/dropDownList/dropDownList";
 
 class RowBasket extends React.Component {
-  updateCart=this.props.updateCart
   render() {
     return (
       <tr>
@@ -16,18 +15,24 @@ class RowBasket extends React.Component {
           ></img>
         </td>
         <td>
-          <div className="cart-table__name">
-            {this.props.name}
-          </div>
+          <div className="cart-table__name">{this.props.name}</div>
         </td>
         <td>
-          <DropDownList list={[36, 37, 38, 39, 40, 41, 42, 43, 44, 45]} defaultValue= {37} id={this.props.idProduct}/>
+          <DropDownList
+            list={[36, 37, 38, 39, 40, 41, 42, 43, 44, 45]}
+            defaultValue={37}
+            id={this.props.idProduct}
+          />
         </td>
         <td className="cart-table__price">
           <span>{this.props.cost} &#8381;</span>
         </td>
         <td className="cart-price__count">
-          <PriceCount currentCount={this.props.count} id={this.props.idProduct} updateCart={this.props.updateCart}/>
+          <PriceCount
+            currentCount={this.props.count}
+            id={this.props.idProduct}
+            updateCart={this.props.updateCart}
+          />
         </td>
         <td className="cart-table__total">
           <span>{this.props.sum} &#8381;</span>

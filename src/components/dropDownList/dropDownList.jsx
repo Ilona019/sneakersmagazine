@@ -8,8 +8,6 @@ class DropDownList extends React.Component {
 
   componentDidUpdate(prevProps) {
     //id товара, у которого меняется размер.
-    console.log(this.state.currentItem+" "+this.props.id);
-    //замедлить fetch
   }
 
 
