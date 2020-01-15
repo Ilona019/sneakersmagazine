@@ -1,0 +1,70 @@
+.btn-addtochosen-class {
+    width: 120px;
+    border: 1px solid white;
+    padding-left: 30px;
+    font-size: 18px;
+    font-weight: lighter;
+    cursor: pointer;
+}
+
+.btn-addtochosen-class:hover {
+    border: 1px solid dodgerblue;
+    color: dodgerblue;
+}
+
+.btn-checkout-class {
+    width: 120px;
+    border: 1px solid dodgerblue;
+    padding-left: 30px;
+    font-size: 18px;
+    font-weight: lighter;
+    cursor: pointer;
+    background: dodgerblue;
+}
+
+.btn-checkout-class:hover {
+    background: mediumblue;
+    border: 1px solid mediumblue;
+}
+
+.btn-increase-class {
+    display: inline-block;
+    font-weight: lighter;
+    width: 30px;
+    padding-left: 15px;
+    padding-top: 5px;
+}
+
+.btn-plus-minus-class {
+    width: 30px;
+    height: 30px;
+    background: lightgray;
+    border-radius: 50%;
+    color: #222;
+    font-weight: lighter;
+    font-size: 26px;
+    cursor: pointer;
+    line-height: 28px;
+}
+
+.size-class {
+    font-size: 22px;
+    font-weight: lighter;
+    margin-left: 10px;
+
+    width: 40px;
+    height: 35px;
+    line-height: 30px;
+    box-sizing: border-box;
+    border: 1px solid lightgrey;
+    border-radius: 3px;
+    padding-left: 7px;
+    background: #222;
+    color: white;
+    cursor: pointer;
+}
+
+.size-class:hover {
+    border: 1px solid dodgerblue;
+    color: dodgerblue;
+}

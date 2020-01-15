@@ -2,9 +2,12 @@ import React, {useState} from 'react';
 import './menu.css';
 import Price from './../price/price'
 
-function Menu(props){
-
-    let menus = [
+class Menu extends React.Component{
+    constructor(props) {
+        super(props);
+    }
+    render(){
+        let menus = [
             {
                 name: "Бренд",
                 nameSubmenu: [
@@ -72,16 +75,8 @@ function Menu(props){
         //отвечает за переименование элементов подменю как в бд
         // let field2 = "";
 
-        function onClickToCheckMenuItems(v){
-            const url = 'https://sneakers-shop-back.herokuapp.com/main/catalog/?' + v;
-            fetch(url, {
-                method: 'POST'
-            });
-            console.log(url);
-        }
 
         function getEnglishName(e){
-            // console.log("из метода е" + e);
             if(e == "Вид спорта"){
                 return "task";
             }
@@ -208,7 +203,7 @@ function Menu(props){
                                 // paramsString = field + "="+ field2;
                                 // console.log(paramsString);
                                 return(
-                                    <div className = "sub-item" onClick = {(element) => onClickToCheckMenuItems(getEnglishName(value.name) + "=" + getEnglishName(v))}>{v}
+                                    <div className = "sub-item" onClick = {(element) => this.props.dataMenu(getEnglishName(value.name) + "=" + getEnglishName(v))}>{v}
                                     </div>
                                 )
                             })}
@@ -218,9 +213,12 @@ function Menu(props){
                     )
             })}
             </nav>
-            <Price />
+            <Price make = {this.props.try}/>
             </div>
         );
+    }
+
+    
   }
 
 export default Menu;

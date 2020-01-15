@@ -1,0 +1,52 @@
+.labelDescription-class {
+    padding: 10px 20px 10px 20px;
+}
+
+.labelPrice-class {
+    padding: 0px 20px 0px;
+    color: dodgerblue;
+    font-weight: bold;
+}
+
+.labelName-class {
+    padding: 10px 20px 0px;
+    font-weight: bold;
+}
+
+.labelProfile-class {
+    position: relative;
+    grid-area: p;
+    font-size: 18px;
+    font-weight: 400;
+    color: #a9a9a9;
+    padding: 5px 10px;
+  
+    margin-left: 30px;
+    margin-top: 40px;
+    cursor: pointer;
+  
+    height: fit-content;
+  }
+  
+  .icons-block {
+    display: none;
+    padding: 8px;
+    margin-top: 10px;
+    background: #222222;
+    height: auto;
+  }
+  
+  .labelProfile-class:hover .icons-block {
+    display: block;
+    position: absolute;
+    top: 20px;
+    z-index: 9999;
+    width: 38px;
+  }
+  
+  .iconsAuth-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+  }
+  

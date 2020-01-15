@@ -1,25 +1,25 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import './card-item.css';
-import Crossimage from "../crossimage/crossimage"; 
-import LabelPrice from "../labelPrice/labelPrice";
-import LabelName from "../labelName/labelName";
-import LabelDescription from "../labelDescription/labelDescription";
+import Crossimage from "../crossimage/crossimage";
+import Label from './../label/label';
 import ImgBlueHeart from '../imgBlueHeart/imgBlueHeart';
 import {Link} from 'react-router-dom';
 
-function CardItem(props) {
- 
-  return (
+class CardItem extends React.Component {
+  render(){
+    return (
       <div className = "card-item-class">
-        <ImgBlueHeart addCart={props.addCart} id={props.id}/>
-        <Link to="/cardlist" style = {{textDecoration: "none", color: "#222"}} >
-          <Crossimage way = {props.image} />
+        {/* addCart={props.addCart} id={props.id}  ВСТАВЬ ПРАВИЛЬНО - Я НЕ РАЗБИРАЛАСЬ ВЫДАВАЛО ОШИБКУ*/}
+        <ImgBlueHeart />
+        <Link to="/item" style = {{textDecoration: "none", color: "#222"}} >
+          <Crossimage way = {this.props.image} />
         </Link>
-        <LabelName name = {props.name}/>
-        <LabelDescription description = {props.description}/>
-        <LabelPrice cost = {props.cost}/>
+        <Label className = "labelName-class" nameOfLabel = {this.props.name}/>
+        <Label className = "labelDescription-class" nameOfLabel = {this.props.description}/>
+        <Label className = "labelPrice-class" nameOfLabel = {this.props.cost + " руб."}/>
     </div>
   );
+  }
 }
 
 export default CardItem;
