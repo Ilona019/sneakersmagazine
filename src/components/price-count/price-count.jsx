@@ -23,8 +23,10 @@ class PriceCount extends React.Component {
         <div className="cart-count">
           <div
             className="cart-count__minus"
-            onClick={() =>
+            onClick={(e) =>{
+             // console.log(e.target.value);
               this.props.updateCart(this.props.id, this.changeScore("Minus"))
+            }
             }
           >
             <span>-</span>

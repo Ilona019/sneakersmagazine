@@ -1,11 +1,9 @@
-import React, {useState} from 'react';
+import React from 'react';
 import './menu.css';
 import Price from './../price/price'
 
 class Menu extends React.Component{
-    constructor(props) {
-        super(props);
-    }
+
     render(){
         let menus = [
             {
@@ -68,7 +66,7 @@ class Menu extends React.Component{
             // },
         ]
 
-        let firstParam = true;
+        //let firstParam = true;
         // let count = 0;
         //отвечает за переименование элементов меню как в бд
         // let field = "";
@@ -77,112 +75,112 @@ class Menu extends React.Component{
 
 
         function getEnglishName(e){
-            if(e == "Вид спорта"){
+            if(e === "Вид спорта"){
                 return "task";
             }
-            else if (e == "Пол"){
+            else if (e === "Пол"){
                 return "gender";
             }
-            else if (e == "Мужчины"){
+            else if (e === "Мужчины"){
                 return "M";
             }
-            else if (e == "Женщины"){
+            else if (e === "Женщины"){
                 return "W";
             }
-            else if (e == "Бренд"){
+            else if (e === "Бренд"){
                 return "brand";
             }
-            else if (e == "Размер"){
+            else if (e === "Размер"){
                 return "size";
             }
-            else if (e == "Цвет"){
+            else if (e === "Цвет"){
                 return "color";
             }
-            else if (e == "Стиль"){
+            else if (e === "Стиль"){
                 return "style";
             }
-            else if(e == "Мужчины"){
+            else if(e === "Мужчины"){
                 return "M";
             }
-            else if(e == "Adidas"){
+            else if(e === "Adidas"){
                 return "adidas";
             }
-            else if(e == "Asics"){
+            else if(e === "Asics"){
                 return "asics";
             }
-            else if(e == "Reebok"){
+            else if(e === "Reebok"){
                 return "reebok";
             }
-            else if(e == "Vans"){
+            else if(e === "Vans"){
                 return "vans";
             }
-            else if(e == "Puma"){
+            else if(e === "Puma"){
                 return "puma";
             }
-            else if(e == "Nike"){
+            else if(e === "Nike"){
                 return "nike";
             }
-            else if(e == "Jordan"){
+            else if(e === "Jordan"){
                 return "jordan";
             }
-            else if(e == "36"){
+            else if(e === "36"){
                 return "36";
             }
-            else if(e == "37"){
+            else if(e === "37"){
                 return "37";
             }
-            else if(e == "38"){
+            else if(e === "38"){
                 return "38";
             }
-            else if(e == "39"){
+            else if(e === "39"){
                 return "39";
             }
-            else if(e == "40"){
+            else if(e === "40"){
                 return "40";
             }
-            else if(e == "41"){
+            else if(e === "41"){
                 return "41";
             }
-            else if(e == "42"){
+            else if(e === "42"){
                 return "42";
             }
-            else if(e == "43"){
+            else if(e === "43"){
                 return "43";
             }
-            else if(e == "44"){
+            else if(e === "44"){
                 return "44";
             }
-            else if(e == "45"){
+            else if(e === "45"){
                 return "45";
             }
-            else if(e == "Черный"){
+            else if(e === "Черный"){
                 return "black";
             }
-            else if(e == "Белый"){
+            else if(e === "Белый"){
                 return "white";
             }
-            else if(e == "Цветной"){
+            else if(e === "Цветной"){
                 return "multy";
             }
-            else if(e == "Sport"){
+            else if(e === "Sport"){
                 return "sport";
             }
-            else if(e == "Classics"){
+            else if(e === "Classics"){
                 return "classics";
             }
-            else if(e == "Бег"){
+            else if(e === "Бег"){
                 return "run";
             }
-            else if(e == "Йога"){
+            else if(e === "Йога"){
                 return "yoga";
             }
-            else if(e == "Тренировки в зале"){
+            else if(e === "Тренировки в зале"){
                 return "indoor";
             }
-            else if(e == "Ходьба"){
+            else if(e === "Ходьба"){
                 return "go";
             }
-            else if(e == "Танцы"){
+            else if(e === "Танцы"){
                 return "dance";
             }
         }
@@ -192,7 +190,7 @@ class Menu extends React.Component{
                 {menus.map((value, index) => { 
                         // field= getEnglishName(value.name)
                     return(
-                        <div className = "item">{value.name}
+                        <div key={index} className = "item">{value.name}
                         <nav className = "n2">
                             
                             {value.nameSubmenu.map((v, i) => {
@@ -203,7 +201,7 @@ class Menu extends React.Component{
                                 // paramsString = field + "="+ field2;
                                 // console.log(paramsString);
                                 return(
-                                    <div className = "sub-item" onClick = {(element) => this.props.dataMenu(getEnglishName(value.name) + "=" + getEnglishName(v))}>{v}
+                                    <div key={i} className = "sub-item" onClick = {(element) => this.props.dataMenu(getEnglishName(value.name) + "=" + getEnglishName(v))}>{v}
                                     </div>
                                 )
                             })}

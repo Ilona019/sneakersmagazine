@@ -1,7 +1,6 @@
 import React from "react";
 import "./content.css";
 import CardItem from "./../card-item/card-item";
-import { element } from "prop-types";
 import { userIsRegistered, cartGuestIsEmpty } from "../forms/checkLocalStorage";
 
 class Content extends React.Component {
@@ -49,10 +48,11 @@ class Content extends React.Component {
         {this.state.data.map(item => {
           return (
               <CardItem
+                key = {item._id}
                 image={item.img}
                 cost={item.cost}
                 name={item.name}
-                description={item.text}
+                description={item.description}
                 addCart={this.addCart}
                 id={item._id}
               />

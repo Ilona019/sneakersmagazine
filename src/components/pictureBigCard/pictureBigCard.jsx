@@ -5,7 +5,7 @@ function PictureBigCard(props) {
 
   return (
       <div className = "picturebigcard-class">
-          <img className = "img-class-pic" src = {props.way}></img>
+          <img className = "img-class-pic" src = {props.way} alt="big card product"></img>
       </div>
   );
 }

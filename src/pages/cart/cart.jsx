@@ -35,7 +35,6 @@ class Cart extends React.Component {
   }
 
   updateSize(id, newSize) {
-    console.log(id, newSize);
     fetch("https://sneakers-shop-back.herokuapp.com/cart/update_size/", {
       method: "POST",
       credentials: "include",

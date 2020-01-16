@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import "./imgBlueHeart.css";
 
 // import ButtonCount from './../button-count/button-count';
