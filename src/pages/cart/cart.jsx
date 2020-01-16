@@ -5,6 +5,7 @@ import EmptyCart from "./emptyCart";
 import RowCart from "./rowCart";
 import Tooltip from "../../components/tooltip/tooltip";
 import PopUpWindows from "../../components/modal/popUpWindows";
+import {userIsRegistered} from "./../../components/forms/checkLocalStorage";
 
 class Cart extends React.Component {
   constructor(props) {
@@ -38,7 +39,7 @@ class Cart extends React.Component {
     fetch("https://sneakers-shop-back.herokuapp.com/cart/update_size/", {
       method: "POST",
       credentials: "include",
-      body: JSON.stringify({_id: id, size: newSize }),
+      body: JSON.stringify({ _id: id, size: newSize }),
       headers: {
         "Content-Type": "application/json"
       }
@@ -140,6 +141,28 @@ class Cart extends React.Component {
     }
   }
 
+  sendOrder() {
+    if(userIsRegistered()){
+    fetch("https://sneakers-shop-back.herokuapp.com/cart/confirm", {
+      credentials: "include"
+    })
+      .then(response => {
+        return response.json();
+      })
+      .then(jsonData => {
+        if (jsonData.error === 0) {
+          this.setState({ productsCart: [] });
+          alert(jsonData.messages);
+        } else {
+          alert("Error on the server.");
+        }
+      });
+    }
+    else{
+      alert("Авторизуйтесь, пожалуйста, чтобы оформить заказ.");
+    }
+  }
+
   render() {
     let cart;
     let renderMessageEmpty = <EmptyCart />;
@@ -176,7 +199,9 @@ class Cart extends React.Component {
           </div>
           <div className="orders-transition-block">
             <div className="btn-orders">
-              <Button className="invert">Перейти к оформлению</Button>
+              <Button className="invert" onClick={this.sendOrder.bind(this)}>
+                Перейти к оформлению
+              </Button>
             </div>
             <div className="total">
               <h3 className="label-total">Общая стоимость</h3>
