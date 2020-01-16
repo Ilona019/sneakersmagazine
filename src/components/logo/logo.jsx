@@ -3,8 +3,8 @@ import './logo.css';
 
 function Logo() {
   return (
-    <div className="logo-class">
-        FastFoot
+    <div>
+       <a href="/" className="logo-class">FastFoot</a>
     </div>
   );
 }

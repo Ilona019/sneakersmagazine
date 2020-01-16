@@ -3,13 +3,13 @@ import  "./dropDownList.css";
 
 class DropDownList extends React.Component {
   state = {
-    currentItem: this.props.defaultValue,
+    currentItem: this.props.currentValue,
   };
 
-  componentDidUpdate(prevProps) {
-    //id товара, у которого меняется размер.
+  updateState(e){
+    this.setState({ currentItem: e.target.value});
+    this.props.updateSize(this.props.id, e.target.value);
   }
-
 
   getListItems() {
     let listItems = [];
@@ -26,7 +26,7 @@ class DropDownList extends React.Component {
         <label>
           <select
             value={this.state.currentItem}
-            onChange={e => this.setState({ currentItem: e.target.value})}
+            onChange={e => { this.updateState(e)}}
           >
             {this.getListItems()}
           </select>

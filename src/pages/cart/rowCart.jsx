@@ -20,8 +20,9 @@ class RowBasket extends React.Component {
         <td>
           <DropDownList
             list={[36, 37, 38, 39, 40, 41, 42, 43, 44, 45]}
-            defaultValue={37}
+            currentValue={this.props.size}
             id={this.props.idProduct}
+            updateSize={this.props.updateSize}
           />
         </td>
         <td className="cart-table__price">

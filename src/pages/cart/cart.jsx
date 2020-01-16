@@ -34,6 +34,18 @@ class Cart extends React.Component {
     this.getServerData();
   }
 
+  updateSize(id, newSize) {
+    console.log(id, newSize);
+    fetch("https://sneakers-shop-back.herokuapp.com/cart/update_size/", {
+      method: "POST",
+      credentials: "include",
+      body: JSON.stringify({_id: id, size: newSize }),
+      headers: {
+        "Content-Type": "application/json"
+      }
+    });
+  }
+
   getServerData() {
     fetch("https://sneakers-shop-back.herokuapp.com/cart/read/", {
       credentials: "include"
@@ -156,6 +168,7 @@ class Cart extends React.Component {
                       sum={element.sum}
                       delEvent={this.deleteProduct.bind(this, element)}
                       updateCart={this.updateCart.bind(this)}
+                      updateSize={this.updateSize.bind(this)}
                     />
                   ))}
                 </tbody>
