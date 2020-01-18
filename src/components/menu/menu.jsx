@@ -123,34 +123,34 @@ class Menu extends React.Component{
             else if(e === "Jordan"){
                 return "jordan";
             }
-            else if(e === "36"){
+            else if(e === 36){
                 return "36";
             }
-            else if(e === "37"){
-                return "37";
+            else if(e === 37){
+                return 37;
             }
-            else if(e === "38"){
+            else if(e === 38){
                 return "38";
             }
-            else if(e === "39"){
+            else if(e === 39){
                 return "39";
             }
-            else if(e === "40"){
+            else if(e === 40){
                 return "40";
             }
-            else if(e === "41"){
+            else if(e === 41){
                 return "41";
             }
-            else if(e === "42"){
+            else if(e === 42){
                 return "42";
             }
-            else if(e === "43"){
+            else if(e === 43){
                 return "43";
             }
-            else if(e === "44"){
+            else if(e === 44){
                 return "44";
             }
-            else if(e === "45"){
+            else if(e === 45){
                 return "45";
             }
             else if(e === "Черный"){
